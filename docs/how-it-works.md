@@ -39,11 +39,9 @@ This matches common guidance such as [NIST SP 800-63B](https://pages.nist.gov/80
 
 UI meters often report a combinatorial “entropy” estimate. PSA calls it `keyspace_bits` to make the assumption explicit:
 
-\[
-\text{keyspace\_bits} = L \cdot \log_2(|\Sigma|)
-\]
+`keyspace_bits ≈ length × log2(|alphabet|)`
 
-where \(L\) is length and \(\Sigma\) is built from the character classes that appear. That is \(\log_2\) of the **uniform brute-force keyspace** — a standard information-theoretic formula when passwords are chosen uniformly from an alphabet (see [Password strength](https://en.wikipedia.org/wiki/Password_strength)). Research has long shown human-chosen passwords are *not* uniform, so this field is only a secondary hint.
+where the alphabet is built from the character classes that appear. That is log₂ of the **uniform brute-force keyspace** — a standard information-theoretic formula when passwords are chosen uniformly from an alphabet (see [Password strength](https://en.wikipedia.org/wiki/Password_strength)). Research has long shown human-chosen passwords are *not* uniform, so this field is only a secondary hint.
 
 How PSA computes it:
 
@@ -67,13 +65,13 @@ Useful for UI hints (“use more character types / length”) and when the model
 
 ### Guessability model
 
-Threat model: an attacker who tries likely passwords first (as modern crackers do), not uniform brute force. That line of work trains a probability model \(P(\text{password})\) on real corpora (e.g. RockYou) and ranks guesses by likelihood.
+Threat model: an attacker who tries likely passwords first (as modern crackers do), not uniform brute force. That line of work trains a probability model P(password) on real corpora (e.g. RockYou) and ranks guesses by likelihood.
 
 Common approaches in the literature:
 
 | Approach | Idea | Examples |
 |----------|------|----------|
-| **n-gram Markov** | \(P(c_i \mid\) previous characters\()\) — PSA uses order-4 | Narayanan & Shmatikov; Ma / Castelluccia et al. |
+| **n-gram Markov** | P(next char \| previous characters) — PSA uses order-4 | Narayanan & Shmatikov; Ma / Castelluccia et al. |
 | **PCFG** | Templates (`word`+`digits`) + terminals | Weir et al., IEEE S&P 2009 |
 | **Neural / GAN** | Generators that sample in likelihood order | Melicher et al.; Hitaj et al. (PassGAN) |
 
@@ -85,7 +83,7 @@ An engineering cousin of PSA’s Markov meter: [Microsoft Edge’s Markov passwo
 | `mc_curve.bin` | Precomputed map from that probability to an estimated **guess number**. Scoring interpolates the curve instead of enumerating the string space live. |
 | `known.bin` | Compact index of the most common training passwords (default: top **500k** by frequency). If the password (or its ASCII-lower form) is in the index, the guess number is capped by that empirical rank. |
 
-**Monte Carlo guess numbers.** Knowing \(P(\text{password})\) is not enough; defenders want *how many guesses* until that password. PSA follows Matteo Dell’Amico & Maurizio Filippone, **“Monte Carlo Strength Evaluation: Fast and Reliable Password Checking”** ([ACM CCS 2015](https://doi.org/10.1145/2810103.2813631), [PDF](https://www.dcs.gla.ac.uk/~maurizio/Publications/ccs15.pdf), [reference code](https://github.com/matteodellamico/montecarlopwd)): sample many passwords from the model, build a probability → rank curve offline, look up new passwords at score time. Related earlier work: Dell’Amico, Michiardi & Roudier, “Password strength: An empirical analysis” (INFOCOM 2010).
+**Monte Carlo guess numbers.** Knowing P(password) is not enough; defenders want *how many guesses* until that password. PSA follows Matteo Dell’Amico & Maurizio Filippone, **“Monte Carlo Strength Evaluation: Fast and Reliable Password Checking”** ([ACM CCS 2015](https://doi.org/10.1145/2810103.2813631), [PDF](https://www.dcs.gla.ac.uk/~maurizio/Publications/ccs15.pdf), [reference code](https://github.com/matteodellamico/montecarlopwd)): sample many passwords from the model, build a probability → rank curve offline, look up new passwords at score time. Related earlier work: Dell’Amico, Michiardi & Roudier, “Password strength: An empirical analysis” (INFOCOM 2010).
 
 **Known-list rank.** Using a frequency-sorted leak head as “guessed early” is standard in evaluations and meters. PSA’s index can only **lower** the estimated guess number (safe bias). Measuring that against RockYou: [leak-eval.md](leak-eval.md).
 

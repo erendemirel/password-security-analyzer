@@ -23,7 +23,7 @@ For each password, PSA returns a small JSON object. The fields most apps care ab
 |-------|---------|
 | `label` | `weak`, `fair`, `strong`, or `very_strong` — the main UI signal |
 | `strength_bits` | Rough “how hard to guess?” score from the trained model (higher is harder) |
-| `keyspace_bits` | Entropy / \(\log_2\) of the uniform brute-force keyspace (length × alphabet); easy to overrate `Password1!` |
+| `keyspace_bits` | Entropy / log₂ of the uniform brute-force keyspace (length × alphabet); easy to overrate `Password1!` |
 | `breach` | Whether the password appears in Have I Been Pwned (online or offline) |
 | `reasons` | Optional hints (e.g. sequential characters, looks like a UUID) |
 
