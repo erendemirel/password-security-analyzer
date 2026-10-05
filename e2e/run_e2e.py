@@ -26,6 +26,7 @@ CORPUS = Path(__file__).resolve().parent / "corpus.json"
 CORPUS_SECLISTS = Path(__file__).resolve().parent / "corpus_seclists.json"
 CORPUS_HIBP = Path(__file__).resolve().parent / "corpus_hibp.json"
 CORPUS_TRICKY = Path(__file__).resolve().parent / "corpus_tricky.json"
+CORPUS_KEYSPACE = Path(__file__).resolve().parent / "corpus_keyspace.json"
 HIBP_OFFLINE = ROOT / "data" / "hibp" / "ranges"
 
 LABEL_RANK = {

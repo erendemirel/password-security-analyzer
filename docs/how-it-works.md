@@ -90,6 +90,7 @@ An engineering cousin of PSA’s Markov meter: [Microsoft Edge’s Markov passwo
 Design choices that matter in practice:
 
 - When signals disagree, the engine **prefers the weaker outcome** (known rank can only lower the guess number; pattern checks can only lower the label).
+- **Keyspace cap:** if the Markov/Monte Carlo guess number exceeds `2^keyspace_bits`, it is capped there (`reasons` may include `capped_by_keyspace`). Short “random-looking” strings are a common Markov blind spot; brute-forcing the observed alphabet is always an upper bound.
 - Empty passwords are always weak.
 - A HIBP hit skips the model entirely.
 - Training can prune rare n-grams so model files stay a few megabytes (slightly less precision on rare sequences).
