@@ -88,12 +88,12 @@ impl ScoringEngine {
         // Markov can overrate short "random-looking" strings (low model probability →
         // huge guess numbers). An attacker can always brute-force the observed
         // character classes, so never claim more guesses than 2^keyspace_bits.
+        // Applied silently (not a user-facing "reason" like sequential_run).
         let ks = keyspace_bits(password);
         if ks.is_finite() && ks >= 0.0 {
             let keyspace_guesses = 2f64.powf(ks);
             if keyspace_guesses.is_finite() && keyspace_guesses < guesses {
                 guesses = keyspace_guesses;
-                reasons.push("capped_by_keyspace".to_string());
             }
         }
 

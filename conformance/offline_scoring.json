@@ -51,8 +51,7 @@
       "password": "dj38sy",
       "expect": {
         "aborted": false,
-        "label": "weak",
-        "reasons_contains": ["capped_by_keyspace"]
+        "label": "weak"
       }
     },
     {
@@ -60,8 +59,7 @@
       "password": "dj38sS",
       "expect": {
         "aborted": false,
-        "label": "fair",
-        "reasons_contains": ["capped_by_keyspace"]
+        "label": "fair"
       }
     }
   ]

@@ -25,8 +25,8 @@ fn short_random_looking_capped_by_keyspace() {
             r.keyspace_bits
         );
         assert!(
-            r.reasons.iter().any(|x| x == "capped_by_keyspace"),
-            "{pw}: expected capped_by_keyspace in {:?}",
+            !r.reasons.iter().any(|x| x == "capped_by_keyspace"),
+            "{pw}: keyspace cap should not appear in user-facing reasons: {:?}",
             r.reasons
         );
     }
