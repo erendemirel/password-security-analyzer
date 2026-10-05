@@ -1,10 +1,10 @@
 # Password Security Analyzer
 
-Helps your app tell users whether a password looks **easy to guess** and whether it has shown up in **known breaches**.
+Helps your app tell users whether a password looks easy to guess and whether it has shown up in known breaches.
 
-It runs **on the device or in your backend**, you embed a library (or CLI). There is no PSA cloud service that receives the password.
+It runs on the device or in your backend, you embed a library (or CLI). There is no PSA cloud service that receives the password.
 
-**Try it here:** 
+**Try it:** [Test it here](https://password-security-analyzer-test.netlify.app)
 
 ## How it works
 
