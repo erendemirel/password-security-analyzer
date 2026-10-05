@@ -95,16 +95,18 @@ Design choices that matter in practice:
 - A HIBP hit skips the model entirely.
 - Training can prune rare n-grams so model files stay a few megabytes (slightly less precision on rare sequences).
 
-`strength_bits = log2(guess_number)`. Labels (prefer weaker when near a boundary):
+`strength_bits = log2(guess_number)`. Labels (prefer weaker when near a boundary),
+anchored to attack budgets rather than zxcvbn’s lighter signup bands:
 
-| Label | `strength_bits` |
-|-------|-----------------|
-| `weak` | &lt; 36 (~2³⁶ guesses) |
-| `fair` | 36–50 |
-| `strong` | 50–64 |
-| `very_strong` | ≥ 64 |
+| Label | `strength_bits` | Attack-budget anchor |
+|-------|-----------------|----------------------|
+| `weak` | &lt; 35 | Slightly above the ~10¹⁰ / ~33-bit offline *slow*-hash floor (zxcvbn score-4) |
+| `fair` | 35–48 | Toward Florêncio & Herley offline “probable safety” (~10¹⁴) |
+| `strong` | 48–66 | At/above that offline bar; short of fast-offline / GPU class |
+| `very_strong` | ≥ 66 (~10²⁰ guesses) | Fast-offline / GPU-class ballpark |
 
-These thresholds are for an **online-style advisory meter**, not a claim about offline GPU cracking time.
+Stricter than zxcvbn’s UI scores (which treat ≥10¹⁰ as top-tier under slow hashing).
+Still an **advisory** meter — not a claim about a specific Hashcat setup.
 
 You can disable the model (`--no-model` / `skip_model`) and keep HIBP + `keyspace_bits` only. See [training.md](training.md).
 

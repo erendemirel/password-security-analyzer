@@ -16,7 +16,7 @@
       "password": "dj38sS",
       "tags": ["keyspace", "overrate", "short"],
       "expect": {
-        "max_label": "weak",
+        "max_label": "fair",
         "reasons_any": ["capped_by_keyspace"],
         "strength_bits_le_keyspace": true
       }
@@ -36,7 +36,7 @@
       "password": "dj38syd_",
       "tags": ["keyspace", "overrate", "short"],
       "expect": {
-        "max_label": "fair",
+        "max_label": "strong",
         "reasons_any": ["capped_by_keyspace"],
         "strength_bits_le_keyspace": true
       }

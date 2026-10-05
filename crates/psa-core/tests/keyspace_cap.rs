@@ -7,9 +7,9 @@ fn short_random_looking_capped_by_keyspace() {
 
     for (pw, max_label) in [
         ("dj38sy", StrengthLabel::Weak),
-        ("dj38sS", StrengthLabel::Weak),
+        ("dj38sS", StrengthLabel::Fair),
         ("dj38syd", StrengthLabel::Fair),
-        ("dj38syd_", StrengthLabel::Fair),
+        ("dj38syd_", StrengthLabel::Strong),
         ("xk9m2p", StrengthLabel::Weak),
     ] {
         let r = analyze_offline(pw, None).unwrap();
