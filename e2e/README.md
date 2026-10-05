@@ -30,6 +30,7 @@
 | `e2e/results/eval_*.json` / `eval_latest.json` | RockYou leak eval reports; see [docs/leak-eval.md](../docs/leak-eval.md) |
 | `e2e/corpus_seclists.json` | Sampled from [SecLists Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) via `scripts/download_seclists.py` |
 | `e2e/corpus_hibp.json` | Offline HIBP pwned aborts; needs `data/hibp/ranges` from `scripts/download_hibp.py` |
+| `e2e/corpus_keyspace.json` | Short “random-looking” Markov overrate / keyspace-cap guards |
 
 ## Corpus notes
 

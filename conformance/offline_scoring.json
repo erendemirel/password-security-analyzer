@@ -45,6 +45,24 @@
         "label_in": ["fair", "strong", "very_strong", "weak"],
         "min_keyspace_bits": 100.0
       }
+    },
+    {
+      "id": "short_random_looking_capped",
+      "password": "dj38sy",
+      "expect": {
+        "aborted": false,
+        "label": "weak",
+        "reasons_contains": ["capped_by_keyspace"]
+      }
+    },
+    {
+      "id": "short_mixed_capped",
+      "password": "dj38sS",
+      "expect": {
+        "aborted": false,
+        "label": "weak",
+        "reasons_contains": ["capped_by_keyspace"]
+      }
     }
   ]
 }

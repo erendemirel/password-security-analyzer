@@ -38,11 +38,20 @@ LABEL_RANK = {
 }
 
 
+def _corpus_rel(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT))
+    except ValueError:
+        return str(resolved)
+
+
 def load_cases(paths: list[Path]) -> tuple[list[dict], list[str]]:
     cases: list[dict] = []
     refs: list[str] = []
     seen_ids: set[str] = set()
     for path in paths:
+        path = path if path.is_absolute() else (ROOT / path)
         if not path.exists():
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -161,6 +170,41 @@ def check_expect(result: dict, expect: dict) -> list[str]:
             failures.append(
                 f"breach.source={breach.get('source')} expected {expect['breach_source']}"
             )
+    if expect.get("strength_bits_le_keyspace"):
+        sb = result.get("strength_bits")
+        kb = result.get("keyspace_bits")
+        if sb is None or kb is None:
+            failures.append(
+                f"strength_bits_le_keyspace requires both fields; got strength_bits={sb} keyspace_bits={kb}"
+            )
+        elif float(sb) > float(kb) + 1e-6:
+            failures.append(
+                f"strength_bits {sb} exceeds keyspace_bits {kb} (Markov overrate without keyspace cap)"
+            )
+    if "max_strength_bits" in expect:
+        sb = result.get("strength_bits")
+        if sb is None:
+            failures.append("max_strength_bits set but strength_bits missing")
+        elif float(sb) > float(expect["max_strength_bits"]) + 1e-6:
+            failures.append(
+                f"strength_bits {sb} > max_strength_bits {expect['max_strength_bits']}"
+            )
+    return failures
+
+
+def check_global_invariants(result: dict) -> list[str]:
+    """Always-on guards for scored (non-aborted model) results."""
+    failures = []
+    if not result.get("ok"):
+        return failures
+    # Breach-abort path may omit model scores; only check when both are present.
+    sb = result.get("strength_bits")
+    kb = result.get("keyspace_bits")
+    if sb is not None and kb is not None:
+        if float(sb) > float(kb) + 1e-6:
+            failures.append(
+                f"invariant: strength_bits {sb} > keyspace_bits {kb}"
+            )
     return failures
 
 
@@ -201,7 +245,13 @@ def main() -> int:
     args = ap.parse_args()
 
     psa = find_psa(args.psa)
-    corpus_paths = args.corpus or [CORPUS, CORPUS_SECLISTS, CORPUS_HIBP, CORPUS_TRICKY]
+    corpus_paths = args.corpus or [
+        CORPUS,
+        CORPUS_SECLISTS,
+        CORPUS_HIBP,
+        CORPUS_TRICKY,
+        CORPUS_KEYSPACE,
+    ]
     cases, refs = load_cases(corpus_paths)
     if not cases:
         raise SystemExit(f"no cases loaded from {corpus_paths}")
@@ -236,6 +286,7 @@ def main() -> int:
             continue
         raw = run_psa(psa, case["password"], mode, hibp_offline)
         failures = check_expect(raw, case.get("expect", {}))
+        failures.extend(check_global_invariants(raw))
         passed = not failures
         if not passed:
             n_fail += 1
@@ -269,7 +320,7 @@ def main() -> int:
     summary = {
         "timestamp_utc": ts,
         "psa_binary": str(psa),
-        "corpora": [str(p.relative_to(ROOT)) for p in corpus_paths if p.exists()],
+        "corpora": [_corpus_rel(p) for p in corpus_paths if p.exists()],
         "references": refs,
         "total": len(case_results),
         "passed": sum(1 for c in case_results if c["passed"]),
