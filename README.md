@@ -33,7 +33,7 @@ For each password, PSA returns a small JSON object:
   "guess_number": 1234567.0,
   "strength_bits": 20.2,         // Rough “how hard to guess?” score from the trained model (higher = harder)
   "keyspace_bits": 37.6,         // uniform brute-force entropy; easy to overrate Password1!
-  "label": "weak",               // weak | fair | strong | very_strong — main UI signal
+  "label": "weak",               // from strength_bits: <36 weak, 36–50 fair, 50–64 strong, ≥64 very_strong
   "reasons": []                  // optional hints (sequential chars, looks like a UUID, …)
 }
 ```

@@ -98,10 +98,10 @@ Design choices that matter in practice:
 
 | Label | `strength_bits` |
 |-------|-----------------|
-| `weak` | &lt; 28 (~2²⁸ guesses) |
-| `fair` | 28–40 |
-| `strong` | 40–56 |
-| `very_strong` | ≥ 56 |
+| `weak` | &lt; 36 (~2³⁶ guesses) |
+| `fair` | 36–50 |
+| `strong` | 50–64 |
+| `very_strong` | ≥ 64 |
 
 These thresholds are for an **online-style advisory meter**, not a claim about offline GPU cracking time.
 
