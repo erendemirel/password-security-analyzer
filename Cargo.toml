@@ -12,7 +12,7 @@ default-members = ["crates/psa-core", "crates/psa-cli"]
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/example/password-security-analyzer"
+repository = "https://github.com/erendemirel/password-security-analyzer"
 authors = ["Password Security Analyzer Contributors"]
 
 [workspace.dependencies]

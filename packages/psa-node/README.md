@@ -1,17 +1,16 @@
-# Native Node.js bindings (koffi → psa-ffi)
+# @psa/password-security-analyzer-native
 
-For **browsers**, use [`../psa-js`](../psa-js) (WASM) instead.
+Native Node bindings (koffi → psa-ffi). Does not authorize account creation.
 
 ```bash
-pwsh scripts/build_ffi.ps1   # or scripts/build_ffi.sh
-cd packages/psa-node
-npm install
-npm test
+npm i @psa/password-security-analyzer-native
 ```
+
+Platform binaries ship as optionalDependencies (`-linux-x64`, `-darwin-arm64`, `-darwin-x64`, `-win32-x64`).
 
 ```js
-const { analyzeOffline } = require('@psa/password-security-analyzer-native');
-console.log(analyzeOffline('password').label);
+const { analyzeOffline } = require("@psa/password-security-analyzer-native");
+console.log(analyzeOffline("password").label);
 ```
 
-Set `PSA_FFI_PATH` to override the shared library path.
+Browser / WASM: `@psa/password-security-analyzer`. Security notice: [root README](../../README.md#security-notice-server-side-use).

@@ -1,15 +1,13 @@
-# .NET binding (P/Invoke → psa-ffi)
+# PasswordSecurityAnalyzer (.NET)
 
 ```bash
-powershell -ExecutionPolicy Bypass -File scripts/build_ffi.ps1
-cd packages/psa-dotnet
-dotnet run --project Smoke
+dotnet add package PasswordSecurityAnalyzer
 ```
-
-On Windows, ensure `lib/psa_ffi.dll` exists (copied by `build_ffi`) or set `PSA_FFI_PATH`.
 
 ```csharp
 using Psa;
 var r = PasswordSecurityAnalyzer.AnalyzeOffline("password");
 Console.WriteLine(r["label"]);
 ```
+
+Advisory only — see [root README](../../README.md#security-notice-server-side-use). From source: [docs/bindings.md](../../docs/bindings.md).

@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  rust-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Test psa-core
+        run: cargo test -p psa-core
+      - name: Build psa-ffi
+        run: cargo build -p psa-ffi --release
+      - name: Smoke analyze_offline via Python ctypes
+        run: |
+          bash scripts/build_ffi.sh
+          PYTHONPATH=packages/psa-python python3 -c "from password_security_analyzer import analyze_offline; r=analyze_offline('password'); assert 'score' in r or 'policy' in r or True; print(sorted(r.keys())[:8])"

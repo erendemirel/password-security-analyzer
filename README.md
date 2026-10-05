@@ -19,28 +19,22 @@ Default builds ship with an embedded model. You can skip it (`--no-model` / `ski
 
 ## Output
 
-For each password, PSA returns a small JSON object. The fields most apps care about:
+For each password, PSA returns a small JSON object:
 
-| Field | Meaning |
-|-------|---------|
-| `label` | `weak`, `fair`, `strong`, or `very_strong` — the main UI signal |
-| `strength_bits` | Rough “how hard to guess?” score from the trained model (higher is harder) |
-| `keyspace_bits` | Entropy / log₂ of the uniform brute-force keyspace (length × alphabet); easy to overrate `Password1!` |
-| `breach` | Whether the password appears in Have I Been Pwned (online or offline) |
-| `reasons` | Optional hints (e.g. sequential characters, looks like a UUID) |
-
-Example:
-
-```json
+```jsonc
 {
   "advisory": true,
-  "aborted": false,
-  "breach": { "pwned": false, "occurrences": 0, "source": "hibp_range" },
+  "aborted": false,              // true if scoring stopped early to save CPU time (e.g. known breach)
+  "breach": {                    // Have I Been Pwned (online or offline store)
+    "pwned": false,
+    "occurrences": 0,
+    "source": "hibp_range"
+  },
   "guess_number": 1234567.0,
-  "strength_bits": 20.2,
-  "keyspace_bits": 37.6,
-  "label": "weak",
-  "reasons": []
+  "strength_bits": 20.2,         // Rough “how hard to guess?” score from the trained model (higher = harder)
+  "keyspace_bits": 37.6,         // uniform brute-force entropy; easy to overrate Password1!
+  "label": "weak",               // weak | fair | strong | very_strong — main UI signal
+  "reasons": []                  // optional hints (sequential chars, looks like a UUID, …)
 }
 ```
 
@@ -48,24 +42,63 @@ If the password is in a breach list, PSA stops early, sets `label` to `weak`, an
 
 **Rule of thumb:** show users **`label`** (and optionally breach messaging). Treat `keyspace_bits` as a secondary “complexity” hint, not as real-world strength.
 
+## Installation
+
+Install from the language registry (version tags `v*`). Building from a git clone is optional — see [docs/install.md](docs/install.md).
+
+> [!WARNING]
+> Installs are **large** (~15–22 MB per platform; the Ruby gem is ~90 MB). See [artifact sizes](docs/install.md#artifact-sizes).
+
+```bash
+# Python
+pip install password-security-analyzer
+
+# Node.js (server / native)
+npm i @psa/password-security-analyzer-native
+
+# Node.js / bundler (browser WASM)
+npm i @psa/password-security-analyzer
+
+# .NET
+dotnet add package PasswordSecurityAnalyzer
+
+# Java (Maven)
+#   <dependency>
+#     <groupId>io.github.erendemirel</groupId>
+#     <artifactId>password-security-analyzer</artifactId>
+#     <version>0.1.0</version>
+#   </dependency>
+
+# Ruby
+gem install password_security_analyzer
+
+# Go (cgo; prebuilt libs under lib/GOOS_GOARCH in the module)
+go get github.com/erendemirel/password-security-analyzer/packages/psa-go@v0.1.0
+
+# Rust
+cargo add psa-core --git https://github.com/erendemirel/password-security-analyzer
+# CLI binary: clone repo, then cargo build -p psa-cli --release
+
+# C++ — psa.h / psa.hpp + shared lib from the GitHub Release for your tag
+# https://github.com/erendemirel/password-security-analyzer/releases
+```
+
+Clone/build sizes: [docs/install.md](docs/install.md).
+
 ## Usage
 
-Same engine for the CLI and every language binding.
+Same engine for the CLI and every language binding. Call samples after [Installation](#installation):
 
 > [!CAUTION]
-> See [Security notice (server-side use)](#security-notice-server-side-use) first
-
+> See [Security notice (server-side use)](#security-notice-server-side-use) first.
 
 **CLI**
 
 ```bash
-cargo build -p psa-cli --release
 ./target/release/psa analyze-offline 'correcthorsebatterystaple'   # no network; no HIBP unless --hibp-offline
 ./target/release/psa analyze 'password'                            # live HIBP + scoring
 ./target/release/psa analyze-offline 'password' --hibp-offline data/hibp/ranges   # local HIBP store
 ```
-
-On Windows without MSVC: `cargo +stable-x86_64-pc-windows-gnu build -p psa-cli --release`. More build options: [docs/install.md](docs/install.md).
 
 **Python**
 
@@ -77,6 +110,8 @@ print(analyze_offline("password")["label"])
 **Go**
 
 ```go
+import psa "github.com/erendemirel/password-security-analyzer/packages/psa-go"
+
 r, _ := psa.AnalyzeOffline("password", nil)
 fmt.Println(r["label"])
 ```
@@ -118,9 +153,7 @@ std::cout << psa::analyze_offline("password") << "\n";
 ```
 
 > [!TIP]
-> **`analyze` vs `analyze_offline`:** “Offline” means **no network** — score with the local model (and optional pattern / keyspace checks). It does **not** require a local HIBP database. Breach checking is separate: use `analyze` for the live HIBP API, or pass a local store (`--hibp-offline` / `hibp_offline_path`) if you want breach checks without the network. The language samples below use `analyze_offline` for a simple no-network demo
-
-Packages and how to build the native library: [docs/bindings.md](docs/bindings.md). Browser/WASM: [`packages/psa-js`](packages/psa-js).
+> **`analyze` vs `analyze_offline`:** “Offline” means **no network** — score with the local model (and optional pattern / keyspace checks). It does **not** require a local HIBP database. Breach checking is separate: use `analyze` for the live HIBP API, or pass a local store (`--hibp-offline` / `hibp_offline_path`) if you want breach checks without the network. The samples below use `analyze_offline` for a simple no-network demo.
 
 ## Security notice (server-side use)
 
@@ -136,6 +169,18 @@ Scoring is **CPU heavy**. If you expose this from a backend without protection, 
 - Online HIBP uses [k-anonymity](https://haveibeenpwned.com/API/v3#PwnedPasswords): the full password never leaves your app for that check. HIBP API uses first few characters of the SHA, not the password itself.
 - Prefer checking on blur/submit, not on every keystroke.
 
+## How it is verified
+
+PSA is checked at a few layers (not a formal certification):
+
+1. **Unit tests** — `cargo test -p psa-core` covers scoring helpers and core behavior in Rust.
+2. **CLI end-to-end** — `e2e/run_e2e.py` runs the release `psa` binary on curated corpora (common passwords, SecLists samples, tricky patterns, offline HIBP aborts) and compares against a locked baseline so labels do not get unsafely stronger. See [e2e/README.md](e2e/README.md).
+3. **Leak / research eval** — `scripts/eval_leak.py` scores RockYou (and controls) offline to check label mix and how `guess_number` tracks leak frequency; optional zxcvbn comparison. See [docs/leak-eval.md](docs/leak-eval.md).
+4. **Language bindings** — each wrapper is smoke-tested against the same `psa-ffi` library (`analyze_offline("password")` → weak, plus a few pattern cases). Commands: [docs/bindings.md](docs/bindings.md).
+5. **Interactive demo** — the [Netlify WASM demo](https://password-security-analyzer-test.netlify.app) exercises the browser build.
+
+CI runs the Rust tests and a Python FFI smoke; the full e2e/leak suites are local (they need wordlists / HIBP data).
+
 ## When not to rely on it alone
 
 - Account creation / login policy belongs on the server.
@@ -146,11 +191,12 @@ Scoring is **CPU heavy**. If you expose this from a backend without protection, 
 
 | Topic | Doc |
 |-------|-----|
-| Scoring design (pipeline, formulas, research background) | [docs/how-it-works.md](docs/how-it-works.md) |
-| Build from source (CLI, WASM, Rust crate) | [docs/install.md](docs/install.md) |
-| Language bindings / FFI | [docs/bindings.md](docs/bindings.md) |
-| Training, offline HIBP, e2e, retrain | [docs/training.md](docs/training.md) |
-| RockYou research evaluation | [docs/leak-eval.md](docs/leak-eval.md) |
+| How it works | [docs/how-it-works.md](docs/how-it-works.md) |
+| Build from source | [docs/install.md](docs/install.md) |
+| Bindings / FFI smoke | [docs/bindings.md](docs/bindings.md) |
+| E2E CLI suites | [e2e/README.md](e2e/README.md) |
+| Training | [docs/training.md](docs/training.md) |
+| Leak eval | [docs/leak-eval.md](docs/leak-eval.md) |
 
 ## License
 

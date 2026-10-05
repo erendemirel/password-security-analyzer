@@ -1,0 +1,356 @@
+name: Release packages
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  id-token: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact: psa_ffi-linux-x64
+            lib_name: libpsa_ffi.so
+            go_dir: linux_amd64
+            java_dir: linux-x86_64
+            dotnet_rid: linux-x64
+            ruby_dir: linux_amd64
+            npm_plat: linux-x64
+          - os: macos-latest
+            artifact: psa_ffi-darwin-arm64
+            lib_name: libpsa_ffi.dylib
+            go_dir: darwin_arm64
+            java_dir: darwin-aarch64
+            dotnet_rid: osx-arm64
+            ruby_dir: darwin_arm64
+            npm_plat: darwin-arm64
+          - os: macos-13
+            artifact: psa_ffi-darwin-x64
+            lib_name: libpsa_ffi.dylib
+            go_dir: darwin_amd64
+            java_dir: darwin-x86_64
+            dotnet_rid: osx-x64
+            ruby_dir: darwin_amd64
+            npm_plat: darwin-x64
+          - os: windows-latest
+            artifact: psa_ffi-windows-x64
+            lib_name: psa_ffi.dll
+            go_dir: windows_amd64
+            java_dir: windows-x86_64
+            dotnet_rid: win-x64
+            ruby_dir: windows_amd64
+            npm_plat: win32-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.os == 'windows-latest' && 'x86_64-pc-windows-gnu' || '' }}
+      - name: Install MinGW (Windows)
+        if: runner.os == 'Windows'
+        run: rustup toolchain install stable-x86_64-pc-windows-gnu && rustup default stable-x86_64-pc-windows-gnu
+      - name: Build psa-ffi
+        shell: bash
+        run: cargo build -p psa-ffi --release
+      - name: Stage artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            SRC="target/release/psa_ffi.dll"
+            # import lib for Go cgo
+            if [[ -f target/release/libpsa_ffi.dll.a ]]; then
+              cp target/release/libpsa_ffi.dll.a dist/
+            fi
+          elif [[ "${{ runner.os }}" == "macOS" ]]; then
+            SRC="target/release/libpsa_ffi.dylib"
+          else
+            SRC="target/release/libpsa_ffi.so"
+          fi
+          cp "$SRC" "dist/${{ matrix.lib_name }}"
+          ls -la dist/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: dist/*
+          if-no-files-found: error
+
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: jetli/wasm-pack-action@v0.4.0
+        with:
+          version: v0.13.1
+      - name: Build WASM package
+        run: |
+          wasm-pack build crates/psa-wasm --release --target bundler --out-dir ../../packages/psa-js/pkg
+          # Ensure package name/version for publish
+          node -e "
+            const fs=require('fs');
+            const p='packages/psa-js/pkg/package.json';
+            const j=JSON.parse(fs.readFileSync(p,'utf8'));
+            j.name='@psa/password-security-analyzer';
+            j.version=require('../../packages/psa-js/package.json'.replace('../../','') || '0.1.0');
+          " || true
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("packages/psa-js")
+          meta = json.loads((root / "package.json").read_text())
+          pkg = root / "pkg" / "package.json"
+          j = json.loads(pkg.read_text())
+          j["name"] = "@psa/password-security-analyzer"
+          j["version"] = meta["version"]
+          j["publishConfig"] = {"access": "public"}
+          pkg.write_text(json.dumps(j, indent=2) + "\n")
+          print("wasm package", j["name"], j["version"])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: psa-wasm-pkg
+          path: packages/psa-js/pkg/**
+
+  github-release:
+    needs: [build-native, build-wasm]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Collect release assets
+        run: |
+          set -euo pipefail
+          mkdir -p release-assets
+          for d in artifacts/psa_ffi-*; do
+            name=$(basename "$d")
+            # flatten: one file per platform
+            for f in "$d"/*; do
+              base=$(basename "$f")
+              cp "$f" "release-assets/${name}-${base}"
+            done
+          done
+          cp include/psa.h release-assets/psa.h
+          if [[ -f packages/psa-cpp/include/psa.hpp ]]; then
+            cp packages/psa-cpp/include/psa.hpp release-assets/psa.hpp
+          fi
+          (cd release-assets && sha256sum * > SHA256SUMS)
+          ls -la release-assets/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-assets/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-pypi:
+    needs: build-native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Build wheels per platform
+        run: |
+          set -euo pipefail
+          pip install build wheel
+          python3 scripts/sync_version.py "${GITHUB_REF_NAME}"
+          mkdir -p dist-final
+          for plat in linux-x64:linux_x86_64:libpsa_ffi.so \
+                      darwin-arm64:macosx_11_0_arm64:libpsa_ffi.dylib \
+                      darwin-x64:macosx_10_12_x86_64:libpsa_ffi.dylib \
+                      windows-x64:win_amd64:psa_ffi.dll; do
+            IFS=: read -r art tag lib <<< "$plat"
+            dir="packages/psa-python/password_security_analyzer/lib"
+            rm -rf "$dir"
+            mkdir -p "$dir"
+            src="artifacts/psa_ffi-${art}/${lib}"
+            if [[ ! -f "$src" ]]; then
+              echo "missing $src"; ls -R artifacts; exit 1
+            fi
+            cp "$src" "$dir/$lib"
+            rm -rf dist-wheels && mkdir -p dist-wheels
+            python -m build --wheel -o dist-wheels packages/psa-python
+            wheel=$(ls dist-wheels/*.whl | tail -n1)
+            python3 scripts/retag_wheel.py "$wheel" "$tag" dist-final
+          done
+          ls -la dist-final/
+      - name: Publish to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          if [[ -z "${TWINE_PASSWORD:-}" ]]; then
+            echo "PYPI_API_TOKEN not set; skipping PyPI publish"
+            exit 0
+          fi
+          pip install twine
+          python -m twine upload --non-interactive dist-final/*
+
+  publish-npm:
+    needs: [build-native, build-wasm]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@psa"
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Sync version, stage, publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_version.py "${GITHUB_REF_NAME}"
+          python3 scripts/stage_npm_natives.py artifacts
+          mkdir -p packages/psa-js/pkg
+          cp -a artifacts/psa-wasm-pkg/. packages/psa-js/pkg/
+          if [[ -z "${NODE_AUTH_TOKEN:-}" ]]; then
+            echo "NPM_TOKEN not set; skipping npm publish"
+            exit 0
+          fi
+          for d in packages/psa-node/npm/*/; do
+            (cd "$d" && npm publish --access public)
+          done
+          (cd packages/psa-node && npm publish --access public)
+          (cd packages/psa-js/pkg && npm publish --access public)
+
+  publish-nuget:
+    needs: build-native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "6.0.x"
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Pack and push
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_version.py "${GITHUB_REF_NAME}"
+          python3 scripts/stage_dotnet_natives.py artifacts
+          dotnet pack packages/psa-dotnet/PasswordSecurityAnalyzer.csproj -c Release -o nupkgs
+          if [[ -z "${NUGET_API_KEY:-}" ]]; then
+            echo "NUGET_API_KEY not set; skipping nuget push"
+            exit 0
+          fi
+          dotnet nuget push nupkgs/*.nupkg -k "$NUGET_API_KEY" -s https://api.nuget.org/v3/index.json --skip-duplicate
+
+  publish-gem:
+    needs: build-native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Build and push gem
+        env:
+          RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_version.py "${GITHUB_REF_NAME}"
+          python3 scripts/stage_ruby_natives.py artifacts
+          cd packages/psa-ruby
+          gem build password_security_analyzer.gemspec
+          if [[ -z "${RUBYGEMS_API_KEY:-}" ]]; then
+            echo "RUBYGEMS_API_KEY not set; skipping gem push"
+            exit 0
+          fi
+          mkdir -p ~/.gem
+          printf -- "---\n:rubygems_api_key: %s\n" "$RUBYGEMS_API_KEY" > ~/.gem/credentials
+          chmod 0600 ~/.gem/credentials
+          gem push password_security_analyzer-*.gem
+
+  publish-maven:
+    needs: build-native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Stage natives and deploy
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          set -euo pipefail
+          python3 scripts/sync_version.py "${GITHUB_REF_NAME}"
+          python3 scripts/stage_java_natives.py artifacts
+          cd packages/psa-java
+          if [[ -z "${MAVEN_USERNAME:-}" || -z "${GPG_PRIVATE_KEY:-}" ]]; then
+            echo "Maven/GPG credentials not set; packaging only"
+            mvn -B -DskipTests -DskipGpg package
+            exit 0
+          fi
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          cat > ~/.m2/settings.xml <<EOF
+          <settings>
+            <servers>
+              <server>
+                <id>central</id>
+                <username>${MAVEN_USERNAME}</username>
+                <password>${MAVEN_PASSWORD}</password>
+              </server>
+            </servers>
+          </settings>
+          EOF
+          mvn -B -DskipTests deploy -Dgpg.passphrase="$GPG_PASSPHRASE"
+
+  stage-go-prebuilts:
+    needs: build-native
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Stage Go libs into tree
+        run: |
+          set -euo pipefail
+          python3 scripts/stage_go_natives.py artifacts
+          find packages/psa-go/lib -type f | sort
+          echo "Commit these under packages/psa-go/lib before tagging if go get should work without a local build."
+      - uses: actions/upload-artifact@v4
+        with:
+          name: psa-go-libs
+          path: packages/psa-go/lib/**

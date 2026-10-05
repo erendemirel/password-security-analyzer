@@ -5,9 +5,10 @@ package psa
 
 /*
 #cgo CFLAGS: -I${SRCDIR} -I${SRCDIR}/../../include
-#cgo windows,amd64 LDFLAGS: -L${SRCDIR}/lib -L${SRCDIR}/../../target/release -lpsa_ffi
-#cgo linux LDFLAGS: -L${SRCDIR}/lib -L${SRCDIR}/../../target/release -lpsa_ffi
-#cgo darwin LDFLAGS: -L${SRCDIR}/lib -L${SRCDIR}/../../target/release -lpsa_ffi
+#cgo linux,amd64 LDFLAGS: -L${SRCDIR}/lib/linux_amd64 -L${SRCDIR}/../../target/release -lpsa_ffi -Wl,-rpath,${SRCDIR}/lib/linux_amd64
+#cgo darwin,arm64 LDFLAGS: -L${SRCDIR}/lib/darwin_arm64 -L${SRCDIR}/../../target/release -lpsa_ffi
+#cgo darwin,amd64 LDFLAGS: -L${SRCDIR}/lib/darwin_amd64 -L${SRCDIR}/../../target/release -lpsa_ffi
+#cgo windows,amd64 LDFLAGS: -L${SRCDIR}/lib/windows_amd64 -L${SRCDIR}/../../target/release -lpsa_ffi
 #include "psa.h"
 #include <stdlib.h>
 */

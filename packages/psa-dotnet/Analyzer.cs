@@ -30,20 +30,39 @@ namespace Psa
                 return NativeLibrary.Load(env);
 
             var baseDir = AppContext.BaseDirectory;
+            var rid = RuntimeInformation.RuntimeIdentifier;
+            if (string.IsNullOrEmpty(rid))
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    rid = "win-x64";
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+                    rid = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "osx-arm64" : "osx-x64";
+                else
+                    rid = RuntimeInformation.OSArchitecture == Architecture.Arm64 ? "linux-arm64" : "linux-x64";
+            }
+
+            string nativeName =
+                RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "psa_ffi.dll"
+                : RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? "libpsa_ffi.dylib"
+                : "libpsa_ffi.so";
+
             var candidates = new[]
             {
+                Path.Combine(baseDir, "runtimes", rid, "native", nativeName),
+                Path.Combine(baseDir, nativeName),
                 Path.Combine(baseDir, "psa_ffi.dll"),
                 Path.Combine(baseDir, "libpsa_ffi.so"),
                 Path.Combine(baseDir, "libpsa_ffi.dylib"),
                 Path.Combine(baseDir, "runtimes", "win-x64", "native", "psa_ffi.dll"),
+                Path.Combine(baseDir, "runtimes", "linux-x64", "native", "libpsa_ffi.so"),
+                Path.Combine(baseDir, "runtimes", "osx-arm64", "native", "libpsa_ffi.dylib"),
+                Path.Combine(baseDir, "runtimes", "osx-x64", "native", "libpsa_ffi.dylib"),
                 Path.Combine(baseDir, "native", "psa_ffi.dll"),
-                // Dev: packages/psa-dotnet/lib and repo target/release
-                // Smoke/bin/Debug/net5.0 → packages/psa-dotnet/lib
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "lib", "psa_ffi.dll")),
-                // Smoke/bin/Debug/net5.0 → repo target/release (6 levels up)
-                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "..", "..", "target", "release", "psa_ffi.dll")),
-                Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "lib", "psa_ffi.dll")),
-                Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "target", "release", "psa_ffi.dll")),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "lib", nativeName)),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "runtimes", rid, "native", nativeName)),
+                Path.GetFullPath(Path.Combine(baseDir, "..", "..", "..", "..", "..", "..", "target", "release", nativeName)),
+                Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "lib", nativeName)),
+                Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "target", "release", nativeName)),
             };
 
             foreach (var path in candidates)

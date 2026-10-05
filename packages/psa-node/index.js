@@ -1,33 +1,51 @@
 /**
  * Native Node bindings via koffi → psa_ffi (same C ABI as Python/Go/Java).
- * Build the shared lib first: pwsh scripts/build_ffi.ps1
  * Browser / WASM: use @psa/password-security-analyzer instead.
  */
 const fs = require('fs');
 const path = require('path');
 const koffi = require('koffi');
 
+function platformPackage() {
+  const { platform, arch } = process;
+  if (platform === 'linux' && arch === 'x64') return '@psa/password-security-analyzer-native-linux-x64';
+  if (platform === 'darwin' && arch === 'arm64') return '@psa/password-security-analyzer-native-darwin-arm64';
+  if (platform === 'darwin' && arch === 'x64') return '@psa/password-security-analyzer-native-darwin-x64';
+  if (platform === 'win32' && arch === 'x64') return '@psa/password-security-analyzer-native-win32-x64';
+  return null;
+}
+
+function libFileName() {
+  if (process.platform === 'win32') return 'psa_ffi.dll';
+  if (process.platform === 'darwin') return 'libpsa_ffi.dylib';
+  return 'libpsa_ffi.so';
+}
+
 function resolveLib() {
   if (process.env.PSA_FFI_PATH && fs.existsSync(process.env.PSA_FFI_PATH)) {
     return process.env.PSA_FFI_PATH;
   }
-  const libDir = path.join(__dirname, 'lib');
-  const release = path.join(__dirname, '..', '..', 'target', 'release');
-  const names =
-    process.platform === 'win32'
-      ? ['psa_ffi.dll']
-      : process.platform === 'darwin'
-        ? ['libpsa_ffi.dylib']
-        : ['libpsa_ffi.so'];
-  for (const n of names) {
-    for (const dir of [libDir, release]) {
-      const p = path.join(dir, n);
+
+  const name = libFileName();
+  const localLib = path.join(__dirname, 'lib', name);
+  if (fs.existsSync(localLib)) return localLib;
+
+  const pkg = platformPackage();
+  if (pkg) {
+    try {
+      const pkgDir = path.dirname(require.resolve(`${pkg}/package.json`));
+      const p = path.join(pkgDir, name);
       if (fs.existsSync(p)) return p;
+    } catch (_) {
+      /* optionalDependency missing */
     }
   }
+
+  const release = path.join(__dirname, '..', '..', 'target', 'release', name);
+  if (fs.existsSync(release)) return release;
+
   throw new Error(
-    'psa_ffi shared library not found. Run: pwsh scripts/build_ffi.ps1 (or scripts/build_ffi.sh)\n' +
-      'Or set PSA_FFI_PATH'
+    'psa_ffi shared library not found. Install the matching optional package, run scripts/build_ffi, or set PSA_FFI_PATH'
   );
 }
 
@@ -79,8 +97,8 @@ function modelInfo() {
 }
 
 module.exports = {
-  analyze,
   analyzeOffline,
+  analyze,
   checkPwned,
   modelInfo,
 };

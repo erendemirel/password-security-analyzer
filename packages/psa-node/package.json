@@ -6,8 +6,7 @@
   "types": "index.d.ts",
   "files": [
     "index.js",
-    "index.d.ts",
-    "lib/"
+    "index.d.ts"
   ],
   "scripts": {
     "test": "node smoke_test.js"
@@ -15,6 +14,15 @@
   "license": "MIT",
   "dependencies": {
     "koffi": "^2.9.0"
+  },
+  "optionalDependencies": {
+    "@psa/password-security-analyzer-native-linux-x64": "0.1.0",
+    "@psa/password-security-analyzer-native-darwin-arm64": "0.1.0",
+    "@psa/password-security-analyzer-native-darwin-x64": "0.1.0",
+    "@psa/password-security-analyzer-native-win32-x64": "0.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">= 16"

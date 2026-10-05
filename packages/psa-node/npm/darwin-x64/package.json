@@ -1,0 +1,10 @@
+{
+  "name": "@psa/password-security-analyzer-native-darwin-x64",
+  "version": "0.1.0",
+  "description": "Native psa_ffi binary for darwin-x64",
+  "license": "MIT",
+  "os": ["darwin"],
+  "cpu": ["x64"],
+  "files": ["libpsa_ffi.dylib"],
+  "publishConfig": { "access": "public" }
+}

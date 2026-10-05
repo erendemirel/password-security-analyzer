@@ -1,14 +1,18 @@
-# Java binding (JNA → psa-ffi)
+# password-security-analyzer (Java)
 
-```bash
-pwsh scripts/build_ffi.ps1
-cd packages/psa-java
-mvn test
+Maven Central: `io.github.erendemirel:password-security-analyzer`
+
+```xml
+<dependency>
+  <groupId>io.github.erendemirel</groupId>
+  <artifactId>password-security-analyzer</artifactId>
+  <version>0.1.0</version>
+</dependency>
 ```
 
 ```java
-Map<String, Object> r = PasswordSecurityAnalyzer.analyzeOffline("password", null);
-System.out.println(r.get("label"));
+System.out.println(
+  com.psa.PasswordSecurityAnalyzer.analyzeOffline("password", null).get("label"));
 ```
 
-Requires JDK 11+ and Maven. Set `PSA_FFI_PATH` to the absolute path of `psa_ffi.dll` / `.so` / `.dylib` if needed.
+Advisory only — see [root README](../../README.md#security-notice-server-side-use).

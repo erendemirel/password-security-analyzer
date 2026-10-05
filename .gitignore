@@ -21,6 +21,11 @@ data/hibp/
 **/libpsa_ffi.a
 **/libpsa_ffi.dll.a
 **/psa_ffi.dll.a
+# Go module prebuilts must be in the tagged tree for `go get`
+!packages/psa-go/lib/**/psa_ffi.dll
+!packages/psa-go/lib/**/libpsa_ffi.so
+!packages/psa-go/lib/**/libpsa_ffi.dylib
+!packages/psa-go/lib/**/libpsa_ffi.dll.a
 
 # Language-package build outputs
 packages/psa-java/target/

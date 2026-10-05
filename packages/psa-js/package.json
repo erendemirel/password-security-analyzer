@@ -22,5 +22,8 @@
     "advisory",
     "strength"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

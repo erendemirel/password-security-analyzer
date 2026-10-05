@@ -3,6 +3,7 @@
 require "json"
 require "ffi"
 require "pathname"
+require "rbconfig"
 
 # Advisory password strength analyzer (FFI → psa-ffi / psa-core).
 # Does not authorize account creation.
@@ -12,23 +13,44 @@ module PasswordSecurityAnalyzer
   module Lib
     extend FFI::Library
 
+    def self.platform_subdir
+      host = RbConfig::CONFIG["host_os"]
+      cpu = RbConfig::CONFIG["host_cpu"]
+      case host
+      when /mswin|mingw|cygwin/i
+        "windows_amd64"
+      when /darwin/i
+        cpu =~ /arm|aarch64/i ? "darwin_arm64" : "darwin_amd64"
+      else
+        cpu =~ /arm|aarch64/i ? "linux_arm64" : "linux_amd64"
+      end
+    end
+
+    def self.lib_name
+      case FFI::Platform::OS
+      when "windows" then "psa_ffi.dll"
+      when "darwin" then "libpsa_ffi.dylib"
+      else "libpsa_ffi.so"
+      end
+    end
+
     def self.lib_candidates
       here = Pathname(__dir__).expand_path
-      repo = here.join("../../..").expand_path # packages/psa-ruby/lib → repo
+      repo = here.join("../../..").expand_path
       env = ENV["PSA_FFI_PATH"]
       out = []
       out << Pathname(env) if env && !env.empty?
 
-      lib_dir = here.join("native")
+      native = here.join("native")
+      out << native.join(platform_subdir, lib_name)
+      out << native.join(lib_name)
+
       case FFI::Platform::OS
       when "windows"
-        out << lib_dir.join("psa_ffi.dll")
         out << repo.join("target/release/psa_ffi.dll")
       when "darwin"
-        out << lib_dir.join("libpsa_ffi.dylib")
         out << repo.join("target/release/libpsa_ffi.dylib")
       else
-        out << lib_dir.join("libpsa_ffi.so")
         out << repo.join("target/release/libpsa_ffi.so")
       end
       out

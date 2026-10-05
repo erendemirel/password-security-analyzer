@@ -3,7 +3,7 @@ package psa_test
 import (
 	"testing"
 
-	psa "github.com/example/password-security-analyzer/packages/psa-go"
+	psa "github.com/erendemirel/password-security-analyzer/packages/psa-go"
 )
 
 func TestOfflineSmoke(t *testing.T) {

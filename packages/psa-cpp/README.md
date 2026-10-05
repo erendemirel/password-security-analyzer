@@ -1,19 +1,12 @@
-# C++ binding (header-only → psa-ffi)
+# psa-cpp
 
-```bash
-powershell -ExecutionPolicy Bypass -File scripts/build_ffi.ps1
-cd packages/psa-cpp
+C++ header wrapper over psa-ffi. **Not** published to a C++ package manager in v1.
 
-# Windows (MSYS2/MinGW g++)
-g++ -std=c++17 -Iinclude -I. -I../../include smoke.cpp -Llib -L../../target/release -lpsa_ffi -o smoke.exe
-# DLL must be findable:
-set PATH=%CD%\lib;%CD%\..\..\target\release;%PATH%
-./smoke.exe
-```
+Download `psa.h`, `psa.hpp`, and the matching shared library from the [GitHub Release](https://github.com/erendemirel/password-security-analyzer/releases) for your version tag.
 
 ```cpp
 #include "psa.hpp"
 std::cout << psa::analyze_offline("password") << "\n";
 ```
 
-`include/psa.hpp` wraps [`psa.h`](../../include/psa.h). JSON is returned as `std::string` (same shape as the CLI).
+From-source build: [docs/bindings.md](../../docs/bindings.md). Advisory only — see [root README](../../README.md#security-notice-server-side-use).

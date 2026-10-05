@@ -1,0 +1,10 @@
+{
+  "name": "@psa/password-security-analyzer-native-linux-x64",
+  "version": "0.1.0",
+  "description": "Native psa_ffi binary for linux-x64",
+  "license": "MIT",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "files": ["libpsa_ffi.so"],
+  "publishConfig": { "access": "public" }
+}
