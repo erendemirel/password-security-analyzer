@@ -2,7 +2,7 @@
 
 Helps your app tell users whether a password looks easy to guess and whether it has shown up in known breaches.
 
-It runs on the device or in your backend, you embed a library (or CLI). There is no PSA cloud service that receives the password.
+It runs on the device or in your backend, you embed a library (or CLI). There is no cloud service that receives the password.
 
 **Try it:** [Test it here](https://password-security-analyzer-test.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/0bfb54c3-5db6-458a-9607-a86ab6e62dfc/deploy-status)](https://app.netlify.com/projects/password-security-analyzer-test/deploys)
 
@@ -11,9 +11,9 @@ It runs on the device or in your backend, you embed a library (or CLI). There is
 Real attackers rarely try every possible string in alphabetical order. They try **common passwords and patterns first**, then rarer ones. PSA mirrors that with a few layers:
 
 1. **Breach check**: If the password already appears in HIBP leaked passwords database, treat it as weak and stop. No model needed: a known leak is enough for a warning.
-2. **Guessability model**: A Markov model trained on public password wordlists ([SecLists](https://github.com/danielmiessler/SecLists/tree/master/Passwords) common lists + [RockYou](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases)) estimates how “typical” the string looks; a Monte Carlo curve turns that into an estimated **guess number**, then `strength_bits = log2(guess_number)` and a `label`. This is the main “will this be guessed?” signal. (HIBP is used only for breach checks — not for training.)
+2. **Guessability model**: A Markov model trained on public password wordlists ([SecLists](https://github.com/danielmiessler/SecLists/tree/master/Passwords) common lists + [RockYou](https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases)) estimates how “typical” the string looks; a Monte Carlo curve turns that into an estimated **guess number**, then `strength_bits = log2(guess_number)` and a `label`. This is the main “will this be guessed?” signal. (HIBP is used only for breach checks, not for training.)
 3. **Pattern checks**: Some easy shapes (long alphabets, UUIDs, hex digests) look unlikely character-by-character, so the model can overrate them. Detectors can only push the label **weaker**, never stronger.
-4. **Entropy (keyspace bits)**: Classic combinatorial size, roughly `length × log2(alphabet)` if someone brute-forced uniformly over the character classes you used. Cheap, needs no training, and still useful when the model is off — but it **overrates** human passwords like `Password1!`. Prefer `label` / `strength_bits` when the model is on; treat `keyspace_bits` as a secondary “complexity” hint.
+4. **Entropy (keyspace bits)**: Classic combinatorial size, roughly `length × log2(alphabet)` if someone brute-forced uniformly over the character classes you used. Cheap, needs no training, and still useful when the model is off, but it **overrates** human passwords like `Password1!`. Prefer `label` / `strength_bits` when the model is on; treat `keyspace_bits` as a secondary “complexity” hint.
 
 Default builds ship with an embedded model. You can skip it (`--no-model` / `skip_model`) and keep breach + `keyspace_bits` only. Full pipeline and research background: [docs/how-it-works.md](docs/how-it-works.md).
 
@@ -44,7 +44,7 @@ Example:
 }
 ```
 
-If the password is in a breach list, PSA stops early, sets `label` to `weak`, and sets `aborted` to `true` (scoring did not continue — the breach is enough for a warning).
+If the password is in a breach list, PSA stops early, sets `label` to `weak`, and sets `aborted` to `true` (scoring did not continue, the breach is enough for a warning).
 
 **Rule of thumb:** show users **`label`** (and optionally breach messaging). Treat `keyspace_bits` as a secondary “complexity” hint, not as real-world strength.
 
@@ -124,7 +124,7 @@ Packages and how to build the native library: [docs/bindings.md](docs/bindings.m
 
 ## Security notice (server-side use)
 
-Scoring is **CPU-heavy**. If you expose this from a backend without protection, an attacker can flood you with analyze requests and burn CPU, memory, or HIBP quota — a straightforward **denial-of-service** risk.
+Scoring is **CPU heavy**. If you expose this from a backend without protection, an attacker can flood you with analyze requests and burn CPU, memory, or HIBP quota; a straightforward **DDoS** risk.
 
 - Prefer running the meter **in the client** (WASM / native app) for UX; keep auth policy on the server.
 - If you must call PSA on the server: **rate-limit** by IP and by account, set **timeouts**, cap **password length**, and do **not** offer an open, unauthenticated “score any string” API to the internet.
