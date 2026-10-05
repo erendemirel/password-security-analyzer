@@ -15,7 +15,7 @@ Real attackers rarely try every possible string in alphabetical order. They try 
 3. **Pattern checks**: Some easy shapes (long alphabets, UUIDs, hex digests) look unlikely character-by-character, so the model can overrate them. Detectors can only push the label **weaker**, never stronger.
 4. **Entropy (keyspace bits)**: Classic combinatorial size, roughly `length × log2(alphabet)` if someone brute-forced uniformly over the character classes you used. Cheap, needs no training, and still useful when the model is off, but it **overrates** human passwords like `Password1!`. Prefer `label` / `strength_bits` when the model is on; treat `keyspace_bits` as a secondary “complexity” hint.
 
-Default builds ship with an embedded model. You can skip it (`--no-model` / `skip_model`) and keep breach + `keyspace_bits` only. Full pipeline and research background: [docs/how-it-works.md](docs/how-it-works.md).
+More detail: [docs/how-it-works.md](docs/how-it-works.md).
 
 ## Output
 
@@ -173,13 +173,12 @@ Scoring is **CPU heavy**. If you expose this from a backend without protection, 
 
 PSA is checked at a few layers (not a formal certification):
 
-1. **Unit tests** — `cargo test -p psa-core` covers scoring helpers and core behavior in Rust.
-2. **CLI end-to-end** — `e2e/run_e2e.py` runs the release `psa` binary on curated corpora (common passwords, SecLists samples, tricky patterns, offline HIBP aborts) and compares against a locked baseline so labels do not get unsafely stronger. See [e2e/README.md](e2e/README.md).
-3. **Leak / research eval** — `scripts/eval_leak.py` scores RockYou (and controls) offline to check label mix and how `guess_number` tracks leak frequency; optional zxcvbn comparison. See [docs/leak-eval.md](docs/leak-eval.md).
-4. **Language bindings** — each wrapper is smoke-tested against the same `psa-ffi` library (`analyze_offline("password")` → weak, plus a few pattern cases). Commands: [docs/bindings.md](docs/bindings.md).
-5. **Interactive demo** — the [Netlify WASM demo](https://password-security-analyzer-test.netlify.app) exercises the browser build.
+1. **CLI end-to-end** — `e2e/run_e2e.py` runs the release `psa` binary on curated corpora (common passwords, SecLists samples, tricky patterns, offline HIBP aborts) and compares against a locked baseline so labels do not get unsafely stronger. See [e2e/README.md](e2e/README.md).
+2. **Leak / research eval** — `scripts/eval_leak.py` scores RockYou (and controls) offline to check label mix and how `guess_number` tracks leak frequency; optional zxcvbn comparison. See [docs/leak-eval.md](docs/leak-eval.md).
+3. **Language bindings** — each wrapper is smoke-tested against the same `psa-ffi` library (`analyze_offline("password")` → weak, plus a few pattern cases). Commands: [docs/bindings.md](docs/bindings.md).
+4. **Interactive demo** — the [Netlify WASM demo](https://password-security-analyzer-test.netlify.app) exercises the browser build.
 
-CI runs the Rust tests and a Python FFI smoke; the full e2e/leak suites are local (they need wordlists / HIBP data).
+The full e2e/leak suites are local (they need wordlists / HIBP data).
 
 ## When not to rely on it alone
 
