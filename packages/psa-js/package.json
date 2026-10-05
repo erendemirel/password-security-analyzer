@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build:wasm": "wasm-pack build ../../crates/psa-wasm --target bundler --out-dir ../../packages/psa-js/pkg --release",
-    "build:wasm:nodejs": "wasm-pack build ../../crates/psa-wasm --target nodejs --out-dir ../../packages/psa-js/pkg-node --release"
+    "build:wasm:nodejs": "wasm-pack build ../../crates/psa-wasm --target nodejs --out-dir ../../packages/psa-js/pkg-node --release",
+    "build:wasm:web": "wasm-pack build ../../crates/psa-wasm --target web --out-dir ../../demo/pkg --release"
   },
   "keywords": [
     "password",

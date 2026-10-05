@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Password Security Analyzer — demo</title>
+    <meta
+      name="description"
+      content="Advisory on-device password strength demo (Markov + Monte Carlo + optional HIBP)."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <main class="shell">
+      <header class="brand">
+        <h1>Password Security Analyzer</h1>
+      </header>
+
+      <section class="panel" aria-labelledby="try-heading">
+        <h2 id="try-heading" class="visually-hidden">Try a password</h2>
+        <label class="field">
+          <span>Password</span>
+          <input
+            id="password"
+            type="password"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Enter a password…"
+          />
+        </label>
+        <div class="toggles">
+          <label class="check">
+            <input id="show" type="checkbox" />
+            <span>Show password</span>
+          </label>
+          <label class="check">
+            <input id="hibp" type="checkbox" />
+            <span>Check HIBP (network)</span>
+          </label>
+        </div>
+        <button id="analyze" type="button" class="btn" disabled>Analyze</button>
+        <p id="status" class="status" role="status">Loading engine…</p>
+        <div id="result" class="result" hidden></div>
+      </section>
+
+      <footer class="foot">
+        <p>
+          Default path is <code>analyzeOffline</code> (no network). HIBP uses
+          only a SHA-1 prefix.
+          <a href="https://github.com/erendemirel/password-security-analyzer"
+            >Source</a
+          >
+          ·
+          <a
+            href="https://github.com/erendemirel/password-security-analyzer/blob/main/docs/how-it-works.md"
+            >How it works</a
+          >
+        </p>
+      </footer>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

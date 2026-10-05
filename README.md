@@ -4,6 +4,8 @@ Helps your app tell users whether a password looks **easy to guess** and whether
 
 It runs **on the device or in your backend**, you embed a library (or CLI). There is no PSA cloud service that receives the password.
 
+**Try it here:** 
+
 ## How it works
 
 Real attackers rarely try every possible string in alphabetical order. They try **common passwords and patterns first**, then rarer ones. PSA mirrors that with a few layers:

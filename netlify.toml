@@ -1,0 +1,12 @@
+# Netlify: build WASM on each deploy, publish static demo/
+[build]
+  command = "bash scripts/build_demo.sh"
+  publish = "demo"
+
+[build.environment]
+  # Keep builds quieter / a bit leaner
+  CARGO_TERM_COLOR = "always"
+  RUSTFLAGS = "-C debuginfo=0"
+
+[build.processing]
+  skip_processing = true
