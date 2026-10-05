@@ -1,0 +1,23 @@
+{
+  "description": "HIBP parsing fixtures (no live network).",
+  "cases": [
+    {
+      "id": "password_sha1_prefix",
+      "password": "password",
+      "expect_prefix": "5BAA6",
+      "expect_suffix": "1E4C9B93F3F0682250B6CF8331B7EE68FD8"
+    },
+    {
+      "id": "range_body_hit_with_padding",
+      "suffix": "1E4C9B93F3F0682250B6CF8331B7EE68FD8",
+      "body": "1E4C9B93F3F0682250B6CF8331B7EE68FD8:3861493\nAAAA0000000000000000000000000000000:0\n",
+      "expect_occurrences": 3861493
+    },
+    {
+      "id": "range_body_padding_ignored",
+      "suffix": "AAAA0000000000000000000000000000000",
+      "body": "AAAA0000000000000000000000000000000:0\nBBBB1111111111111111111111111111111:2\n",
+      "expect_occurrences": null
+    }
+  ]
+}

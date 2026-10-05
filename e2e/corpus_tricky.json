@@ -1,0 +1,1014 @@
+{
+  "description": "Handcrafted tricky cases: novel strong, leet/keyboard/year/pop-culture traps, structured constants, multilingual.",
+  "cases": [
+    {
+      "id": "tricky_novel_random_16",
+      "password": "kR7!mQx#9vLp$2nW",
+      "tags": [
+        "tricky",
+        "strongish",
+        "novel"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 90
+      }
+    },
+    {
+      "id": "tricky_novel_passphrase",
+      "password": "orchid-waltz-mercury-lantern-84!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "passphrase"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 140
+      }
+    },
+    {
+      "id": "tricky_long_random_24",
+      "password": "bN4$wE8*qT1!zY6@uI3#oP9",
+      "tags": [
+        "tricky",
+        "strongish",
+        "novel"
+      ],
+      "expect": {
+        "min_label": "very_strong",
+        "min_keyspace_bits": 140
+      }
+    },
+    {
+      "id": "tricky_german_novel",
+      "password": "nebelwald-klangfarbe-7x!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "multilingual"
+      ],
+      "expect": {
+        "min_label": "strong"
+      }
+    },
+    {
+      "id": "tricky_leet_password",
+      "password": "P@ssw0rd!",
+      "tags": [
+        "tricky",
+        "leet",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_keyboard_walk",
+      "password": "qwertyuiopasdfgh",
+      "tags": [
+        "tricky",
+        "keyboard",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_welcome_year",
+      "password": "Welcome2024!",
+      "tags": [
+        "tricky",
+        "date",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_base64_password",
+      "password": "cGFzc3dvcmQ=",
+      "tags": [
+        "tricky",
+        "encoding",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_double_password",
+      "password": "passwordpassword",
+      "tags": [
+        "tricky",
+        "common",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_iloveyou_camel",
+      "password": "ILoveYou123",
+      "tags": [
+        "tricky",
+        "phrase",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_repeat_block",
+      "password": "abcabcabcabc",
+      "tags": [
+        "tricky",
+        "pattern",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_nil_uuid",
+      "password": "550e8400-e29b-41d4-a716-446655440000",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_uuid"]
+      }
+    },
+    {
+      "id": "tricky_fr_novel",
+      "password": "brume-violon-quatorze-9!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "fr"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 102
+      }
+    },
+    {
+      "id": "tricky_es_novel",
+      "password": "niebla-castillo-farola-3#",
+      "tags": [
+        "tricky",
+        "strongish",
+        "es"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 106
+      }
+    },
+    {
+      "id": "tricky_jp_romaji_novel",
+      "password": "kasumi-tsubaki-yoru-7!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "ja"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 93
+      }
+    },
+    {
+      "id": "tricky_diceware5",
+      "password": "maple.quartz.ember.willow.92",
+      "tags": [
+        "tricky",
+        "strongish",
+        "passphrase"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 119
+      }
+    },
+    {
+      "id": "tricky_mixed_script_novel",
+      "password": "Securité-Δ9!kLm",
+      "tags": [
+        "tricky",
+        "strongish",
+        "unicode"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 69
+      }
+    },
+    {
+      "id": "tricky_emoji_suffix",
+      "password": "orchid-lantern-84!",
+      "tags": [
+        "tricky",
+        "strongish"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 76
+      }
+    },
+    {
+      "id": "tricky_long_hex_novel",
+      "password": "a7f3c91e0b2d4468e1a9c0ff",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "expect": {
+        "min_label": "strong",
+        "min_keyspace_bits": 86
+      }
+    },
+    {
+      "id": "tricky_letmein1",
+      "password": "Letmein1!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_monkey1",
+      "password": "Monkey123",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_dragon2024",
+      "password": "Dragon2024",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_adminadmin",
+      "password": "adminadmin",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_rootroot",
+      "password": "rootroot",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_qazwsx",
+      "password": "qazwsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_zaq12wsx",
+      "password": "zaq12wsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_1q2w3e4r",
+      "password": "1q2w3e4r",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_starwars",
+      "password": "Starwars1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_batman",
+      "password": "Batman123",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_pokemon",
+      "password": "Pikachu1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_harry",
+      "password": "HarryPotter",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_matrix",
+      "password": "Matrix1999",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_spring2023",
+      "password": "Spring2023!",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_january1",
+      "password": "January1",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_phone_us",
+      "password": "5551234567",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_pin_1234",
+      "password": "1234",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_pin_000000",
+      "password": "000000",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_emailish",
+      "password": "user@email.com",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_firstname_year",
+      "password": "Jennifer1985",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_lorem",
+      "password": "LoremIpsum",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_changeme!",
+      "password": "ChangeMe!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_passw0rd!",
+      "password": "Passw0rd!",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_p@$$w0rd",
+      "password": "P@$$w0rd",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_iloveyou!",
+      "password": "Iloveyou!",
+      "tags": [
+        "tricky",
+        "phrase"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_je_taime",
+      "password": "JeT'aime",
+      "tags": [
+        "tricky",
+        "phrase",
+        "fr"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_tequiero1",
+      "password": "Tequiero1",
+      "tags": [
+        "tricky",
+        "phrase",
+        "es"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_spaces_password",
+      "password": "pass word",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_all_ones",
+      "password": "11111111",
+      "tags": [
+        "tricky",
+        "repeat"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_hexspeak",
+      "password": "deadbeef",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_cafebabe",
+      "password": "cafebabe",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_router_default",
+      "password": "admin1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_wifi_default",
+      "password": "password1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_ipv4",
+      "password": "192.168.1.1",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_mac",
+      "password": "00:1A:2B:3C:4D:5E",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_mac"]
+      }
+    },
+    {
+      "id": "tricky_jwt_header",
+      "password": "eyJhbGciOiJIUzI1NiJ9",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_creditcardish",
+      "password": "4111111111111111",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_sqlish",
+      "password": "' OR 1=1 --",
+      "tags": [
+        "tricky",
+        "injection"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_pathish",
+      "password": "C:\\Windows\\System32",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_md5_looking",
+      "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+      "tags": [
+        "tricky",
+        "hash"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "tricky_constant_gap",
+      "password": "acegikmo",
+      "tags": ["tricky", "sequential"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["constant_gap"]
+      }
+    },
+    {
+      "id": "tricky_tiled_xyz",
+      "password": "xyzxyzxyz",
+      "tags": ["tricky", "pattern"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["tiled_fragment"]
+      }
+    },
+    {
+      "id": "tricky_hex_digest_offline",
+      "password": "abcdef0123456789abcdef0123456789abcdef01",
+      "tags": ["tricky", "hash", "structured"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_hex"]
+      }
+    },
+    {
+      "id": "tricky_ipv4_structure",
+      "password": "10.0.0.42",
+      "tags": ["tricky", "structured"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_ipv4"]
+      }
+    },
+    {
+      "id": "tricky_hash_prefix_rockyou",
+      "password": "#1bitch",
+      "tags": ["tricky", "rockyou", "known"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["known_from_training"]
+      }
+    },
+    {
+      "id": "tricky_whitespace_only",
+      "password": "     ",
+      "tags": ["tricky", "structured"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["whitespace_only"]
+      }
+    }
+  ]
+}

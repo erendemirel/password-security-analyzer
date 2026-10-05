@@ -1,0 +1,50 @@
+{
+  "description": "Offline scoring conformance (no network). Labels may drift slightly if models are retrained; update expected after intentional retrain.",
+  "cases": [
+    {
+      "id": "empty",
+      "password": "",
+      "expect": {
+        "aborted": false,
+        "label": "weak",
+        "reasons_contains": ["empty_password"],
+        "keyspace_bits": 0.0
+      }
+    },
+    {
+      "id": "common_password",
+      "password": "password",
+      "expect": {
+        "aborted": false,
+        "label_in": ["weak", "fair"],
+        "min_keyspace_bits": 30.0
+      }
+    },
+    {
+      "id": "digits_only_short",
+      "password": "123456",
+      "expect": {
+        "aborted": false,
+        "label_in": ["weak", "fair"],
+        "keyspace_bits_approx": 19.931568569324174
+      }
+    },
+    {
+      "id": "mixed_short",
+      "password": "Ab1!",
+      "expect": {
+        "aborted": false,
+        "keyspace_bits_approx": 26.21835540671055
+      }
+    },
+    {
+      "id": "long_passphrase",
+      "password": "correcthorsebatterystaple",
+      "expect": {
+        "aborted": false,
+        "label_in": ["fair", "strong", "very_strong", "weak"],
+        "min_keyspace_bits": 100.0
+      }
+    }
+  ]
+}

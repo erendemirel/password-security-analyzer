@@ -1,0 +1,37 @@
+/target/
+**/pkg/
+**/pkg-node/
+node_modules/
+.DS_Store
+*.pdb
+*.pyc
+__pycache__/
+data/*.txt
+data/seclists/
+data/hibp/
+!data/hibp/README.md
+.idea/
+.vscode/
+
+# Built native libraries (produced by scripts/build_ffi.*)
+**/psa_ffi.dll
+**/libpsa_ffi.so
+**/libpsa_ffi.dylib
+**/libpsa_ffi.a
+**/libpsa_ffi.dll.a
+**/psa_ffi.dll.a
+
+# Language-package build outputs
+packages/psa-java/target/
+packages/psa-dotnet/**/bin/
+packages/psa-dotnet/**/obj/
+packages/psa-cpp/smoke
+packages/psa-cpp/smoke.exe
+packages/psa-ruby/.bundle/
+packages/psa-ruby/vendor/
+
+# Local e2e / eval dumps (committed baselines stay tracked)
+e2e/results/eval_*.json
+e2e/results/eval_latest.json
+e2e/results/latest.json
+e2e/results/[0-9]*.json

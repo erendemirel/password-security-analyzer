@@ -1,0 +1,1656 @@
+{
+  "description": "Auto-sampled from SecLists Passwords (see scripts/download_seclists.py)",
+  "source": "https://github.com/danielmiessler/SecLists/tree/master/Passwords",
+  "cases": [
+    {
+      "id": "seclists_0000",
+      "password": "shua",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0001",
+      "password": "rock",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0002",
+      "password": "mantis",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0003",
+      "password": "5050",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0004",
+      "password": "subway",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0005",
+      "password": "llllll",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0006",
+      "password": "showme",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0007",
+      "password": "vols",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0008",
+      "password": "sammie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0009",
+      "password": "terran",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0010",
+      "password": "cocksucker",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0011",
+      "password": "gibson",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0012",
+      "password": "87654321",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0013",
+      "password": "kinky",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0014",
+      "password": "petra",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0015",
+      "password": "sunnyday",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0016",
+      "password": "prague",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0017",
+      "password": "jeepjeep",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0018",
+      "password": "jordan23",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0019",
+      "password": "ffffff1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0020",
+      "password": "1959",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0021",
+      "password": "montana1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0022",
+      "password": "barney1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0023",
+      "password": "businessbabe",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0024",
+      "password": "xmas",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0025",
+      "password": "shakira",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0026",
+      "password": "ramsey",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0027",
+      "password": "guitar",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0028",
+      "password": "trance",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0029",
+      "password": "hilary",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0030",
+      "password": "pippin",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0031",
+      "password": "parola",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0032",
+      "password": "heart",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0033",
+      "password": "thursday",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0034",
+      "password": "square",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0035",
+      "password": "frank1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0036",
+      "password": "funtime",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0037",
+      "password": "choke",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0038",
+      "password": "network",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0039",
+      "password": "strawber",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0040",
+      "password": "playboy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0041",
+      "password": "allman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0042",
+      "password": "mattie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0043",
+      "password": "marley",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0044",
+      "password": "done",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0045",
+      "password": "zimmer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0046",
+      "password": "mollie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0047",
+      "password": "field",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0048",
+      "password": "highland",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0049",
+      "password": "paige",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0050",
+      "password": "audia4",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0051",
+      "password": "bestbuy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0052",
+      "password": "sundown",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0053",
+      "password": "milano",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0054",
+      "password": "access14",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0055",
+      "password": "remember",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0056",
+      "password": "kool",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0057",
+      "password": "xyz123",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0058",
+      "password": "burger",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0059",
+      "password": "starfire",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0060",
+      "password": "shen",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0061",
+      "password": "deputy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0062",
+      "password": "pablo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0063",
+      "password": "lucas1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0064",
+      "password": "charlotte",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0065",
+      "password": "inferno",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0066",
+      "password": "sambo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0067",
+      "password": "sloppy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0068",
+      "password": "squerting",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0069",
+      "password": "francois",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0070",
+      "password": "butt",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0071",
+      "password": "booyah",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0072",
+      "password": "hustler",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0073",
+      "password": "bucker",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0074",
+      "password": "hambone",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0075",
+      "password": "valhalla",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0076",
+      "password": "0101",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0077",
+      "password": "quebec",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0078",
+      "password": "rancid",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0079",
+      "password": "17011701",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0080",
+      "password": "george1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0081",
+      "password": "pipeline",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0082",
+      "password": "shooter",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0083",
+      "password": "chickens",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0084",
+      "password": "888888",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0085",
+      "password": "magnet",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0086",
+      "password": "2580",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0087",
+      "password": "cygnus",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0088",
+      "password": "stacey",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0089",
+      "password": "wolf359",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0090",
+      "password": "blackice",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0091",
+      "password": "hakr",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0092",
+      "password": "homemade",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0093",
+      "password": "mongo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0094",
+      "password": "irishman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0095",
+      "password": "galant",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0096",
+      "password": "soccer1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0097",
+      "password": "azzer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0098",
+      "password": "qwaszx",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0099",
+      "password": "rhino",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0100",
+      "password": "foreman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0101",
+      "password": "1117",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0102",
+      "password": "desiree",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0103",
+      "password": "tracie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0104",
+      "password": "moto",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0105",
+      "password": "lunchbox",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0106",
+      "password": "loose",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0107",
+      "password": "bigbob",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0108",
+      "password": "foot",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0109",
+      "password": "wisdom",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0110",
+      "password": "4226",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0111",
+      "password": "1113",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0112",
+      "password": "father",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0113",
+      "password": "friend",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0114",
+      "password": "florence",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0115",
+      "password": "ricky",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0116",
+      "password": "kingpin",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0117",
+      "password": "buzzer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0118",
+      "password": "cyzkhw",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0119",
+      "password": "integra",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0120",
+      "password": "enternow",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0121",
+      "password": "bigben",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0122",
+      "password": "coach1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0123",
+      "password": "delaney",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0124",
+      "password": "toes",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0125",
+      "password": "gobears",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0126",
+      "password": "abacus",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0127",
+      "password": "gandalf",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0128",
+      "password": "13579",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0129",
+      "password": "ship",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0130",
+      "password": "haha",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0131",
+      "password": "soprano",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0132",
+      "password": "pian",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0133",
+      "password": "figaro",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0134",
+      "password": "kenobi",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0135",
+      "password": "warriors",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0136",
+      "password": "tribble",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0137",
+      "password": "123456789",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0138",
+      "password": "motley",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0139",
+      "password": "tammy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0140",
+      "password": "betty",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0141",
+      "password": "moonman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0142",
+      "password": "qian",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0143",
+      "password": "yyyyyyy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0144",
+      "password": "nogard",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0145",
+      "password": "zaq12wsx",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0146",
+      "password": "aspire",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0147",
+      "password": "stone55",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0148",
+      "password": "alpina",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    },
+    {
+      "id": "seclists_0149",
+      "password": "badboy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "expect": {
+        "max_label": "weak"
+      }
+    }
+  ]
+}

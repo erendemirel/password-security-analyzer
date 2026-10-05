@@ -1,0 +1,15 @@
+[package]
+name = "psa-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "CLI for the advisory password security analyzer"
+
+[[bin]]
+name = "psa"
+path = "src/main.rs"
+
+[dependencies]
+psa-core = { workspace = true, features = ["native-http", "embedded-model"] }
+clap = { workspace = true }
+serde_json = { workspace = true }

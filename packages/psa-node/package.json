@@ -1,0 +1,22 @@
+{
+  "name": "@psa/password-security-analyzer-native",
+  "version": "0.1.0",
+  "description": "Native Node bindings for advisory password strength analysis (psa-ffi). Does not authorize accounts.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "node smoke_test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "koffi": "^2.9.0"
+  },
+  "engines": {
+    "node": ">= 16"
+  }
+}

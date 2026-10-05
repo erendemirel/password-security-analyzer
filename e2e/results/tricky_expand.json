@@ -1,0 +1,875 @@
+{
+  "cases": [
+    {
+      "id": "tricky_fr_novel",
+      "password": "brume-violon-quatorze-9!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "fr"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 163.92766955334966,
+      "keyspace_bits": 146.09910819000814,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_es_novel",
+      "password": "niebla-castillo-farola-3#",
+      "tags": [
+        "tricky",
+        "strongish",
+        "es"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 152.09350922586628,
+      "keyspace_bits": 152.18657103125847,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_jp_romaji_novel",
+      "password": "kasumi-tsubaki-yoru-7!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "ja"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 138.70756526434565,
+      "keyspace_bits": 133.92418250750745,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_diceware5",
+      "password": "maple.quartz.ember.willow.92",
+      "tags": [
+        "tricky",
+        "strongish",
+        "passphrase"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 159.05320874310033,
+      "keyspace_bits": 170.44895955500948,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_mixed_script_novel",
+      "password": "Securité-Δ9!kLm",
+      "tags": [
+        "tricky",
+        "strongish",
+        "unicode"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 82.79755774428125,
+      "keyspace_bits": 98.77443751081734,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_emoji_suffix",
+      "password": "orchid-lantern-84!",
+      "tags": [
+        "tricky",
+        "strongish"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 100.6126122460166,
+      "keyspace_bits": 109.57433114250611,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_long_hex_novel",
+      "password": "a7f3c91e0b2d4468e1a9c0ff",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "hope": "strong+",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 174.17120989462558,
+      "keyspace_bits": 124.07820003461549,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_letmein1",
+      "password": "Letmein1!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 40129,
+      "strength_bits": null,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_monkey1",
+      "password": "Monkey123",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 101017,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_dragon2024",
+      "password": "Dragon2024",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 3124,
+      "strength_bits": null,
+      "keyspace_bits": 59.54196310386875,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_adminadmin",
+      "password": "adminadmin",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 586051,
+      "strength_bits": null,
+      "keyspace_bits": 47.004397181410916,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_rootroot",
+      "password": "rootroot",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 60665,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_qazwsx",
+      "password": "qazwsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 2942316,
+      "strength_bits": null,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_zaq12wsx",
+      "password": "zaq12wsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 1844354,
+      "strength_bits": null,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_1q2w3e4r",
+      "password": "1q2w3e4r",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 7322046,
+      "strength_bits": null,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_starwars",
+      "password": "Starwars1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 170645,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_batman",
+      "password": "Batman123",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 99717,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_pokemon",
+      "password": "Pikachu1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 55377,
+      "strength_bits": null,
+      "keyspace_bits": 47.633570483095,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_harry",
+      "password": "HarryPotter",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 47057,
+      "strength_bits": null,
+      "keyspace_bits": 62.70483689955201,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_matrix",
+      "password": "Matrix1999",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 1746,
+      "strength_bits": null,
+      "keyspace_bits": 59.54196310386875,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_spring2023",
+      "password": "Spring2023!",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 5831,
+      "strength_bits": null,
+      "keyspace_bits": 72.10047736845401,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_january1",
+      "password": "January1",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 29875,
+      "strength_bits": null,
+      "keyspace_bits": 47.633570483095,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_phone_us",
+      "password": "5551234567",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 189,
+      "strength_bits": null,
+      "keyspace_bits": 33.219280948873624,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_pin_1234",
+      "password": "1234",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 30365962,
+      "strength_bits": null,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_pin_000000",
+      "password": "000000",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 12866377,
+      "strength_bits": null,
+      "keyspace_bits": 19.931568569324174,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_emailish",
+      "password": "user@email.com",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 58,
+      "strength_bits": null,
+      "keyspace_bits": 82.01173393178601,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_firstname_year",
+      "password": "Jennifer1985",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 1397,
+      "strength_bits": null,
+      "keyspace_bits": 71.45035572464249,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_lorem",
+      "password": "LoremIpsum",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 379,
+      "strength_bits": null,
+      "keyspace_bits": 57.004397181410916,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_changeme!",
+      "password": "ChangeMe!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 3900,
+      "strength_bits": null,
+      "keyspace_bits": 57.530856805008845,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_passw0rd!",
+      "password": "Passw0rd!",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 175727,
+      "strength_bits": null,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_p@$$w0rd",
+      "password": "P@$$w0rd",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 779178,
+      "strength_bits": null,
+      "keyspace_bits": 52.4367108134211,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_iloveyou!",
+      "password": "Iloveyou!",
+      "tags": [
+        "tricky",
+        "phrase"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 21471,
+      "strength_bits": null,
+      "keyspace_bits": 57.530856805008845,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_je_taime",
+      "password": "JeT'aime",
+      "tags": [
+        "tricky",
+        "phrase",
+        "fr"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 117,
+      "strength_bits": null,
+      "keyspace_bits": 51.138539382230086,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_tequiero1",
+      "password": "Tequiero1",
+      "tags": [
+        "tricky",
+        "phrase",
+        "es"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 43390,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_spaces_password",
+      "password": "pass word",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 5928,
+      "strength_bits": null,
+      "keyspace_bits": 42.793987519471216,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_all_ones",
+      "password": "11111111",
+      "tags": [
+        "tricky",
+        "repeat"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 3654051,
+      "strength_bits": null,
+      "keyspace_bits": 26.575424759098897,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_hexspeak",
+      "password": "deadbeef",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 2621,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_cafebabe",
+      "password": "cafebabe",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 871,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_router_default",
+      "password": "admin1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 1139016,
+      "strength_bits": null,
+      "keyspace_bits": 46.529325012980806,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_wifi_default",
+      "password": "password1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "hope": "weak",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 443397,
+      "strength_bits": null,
+      "keyspace_bits": 62.039100017307746,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_ipv4",
+      "password": "192.168.1.1",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "hope": "observe",
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 44698,
+      "strength_bits": null,
+      "keyspace_bits": 59.315491650566365,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_mac",
+      "password": "00:1A:2B:3C:4D:5E",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "hope": "observe",
+      "label": "very_strong",
+      "pwned": false,
+      "occurrences": 0,
+      "strength_bits": 120.74555400650036,
+      "keyspace_bits": 103.48686830125577,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_jwt_header",
+      "password": "eyJhbGciOiJIUzI1NiJ9",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "hope": "observe",
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 5,
+      "strength_bits": null,
+      "keyspace_bits": 119.0839262077375,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_creditcardish",
+      "password": "4111111111111111",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "hope": "weak-fair",
+      "hibp": true,
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 172,
+      "strength_bits": null,
+      "keyspace_bits": 53.150849518197795,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_sqlish",
+      "password": "' OR 1=1 --",
+      "tags": [
+        "tricky",
+        "injection"
+      ],
+      "hope": "observe",
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 324,
+      "strength_bits": null,
+      "keyspace_bits": 67.19376902455986,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_pathish",
+      "password": "C:\\Windows\\System32",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "hope": "observe",
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 41,
+      "strength_bits": null,
+      "keyspace_bits": 124.53718818187511,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "tricky_md5_looking",
+      "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+      "tags": [
+        "tricky",
+        "hash"
+      ],
+      "hope": "observe",
+      "label": "weak",
+      "pwned": true,
+      "occurrences": 1832,
+      "strength_bits": null,
+      "keyspace_bits": 165.437600046154,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    }
+  ]
+}

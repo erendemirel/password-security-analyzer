@@ -1,0 +1,24 @@
+[package]
+name = "psa-wasm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "WASM bindings for the advisory password security analyzer"
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+psa-core = { workspace = true, features = ["embedded-model"] }
+serde = { workspace = true }
+serde-wasm-bindgen = { workspace = true }
+wasm-bindgen = { workspace = true }
+wasm-bindgen-futures = { workspace = true }
+js-sys = { workspace = true }
+web-sys = { workspace = true }
+console_error_panic_hook = { workspace = true }
+getrandom = { workspace = true }
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false

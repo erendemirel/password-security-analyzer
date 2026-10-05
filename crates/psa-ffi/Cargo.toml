@@ -1,0 +1,21 @@
+[package]
+name = "psa-ffi"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "C ABI for advisory password strength analysis (psa-core)"
+readme = "../../README.md"
+
+[lib]
+name = "psa_ffi"
+crate-type = ["cdylib", "staticlib"]
+
+[features]
+default = ["native-http", "embedded-model"]
+native-http = ["psa-core/native-http"]
+embedded-model = ["psa-core/embedded-model"]
+
+[dependencies]
+psa-core = { workspace = true, default-features = false }
+serde = { workspace = true }
+serde_json = { workspace = true }

@@ -1,0 +1,4 @@
+# On this machine, prefer the GNU toolchain when MSVC link.exe is unavailable.
+# Override with: cargo +stable-x86_64-pc-windows-msvc ...
+[build]
+# target left default; document GNU in README for Windows without VS Build Tools

@@ -1,0 +1,6468 @@
+{
+  "timestamp_utc": "20260926T074955Z",
+  "psa_binary": "D:\\Documents\\Projects\\password-security-analyzer\\target\\release\\psa.exe",
+  "corpora": [
+    "e2e\\corpus.json",
+    "e2e\\corpus_seclists.json",
+    "e2e\\corpus_hibp.json",
+    "e2e\\corpus_tricky.json"
+  ],
+  "references": [
+    "https://microsoftedge.github.io/edgevr/posts/Using-Markov-model-for-password-complexity-estimation-in-microsoft-edge/",
+    "https://github.com/danielmiessler/SecLists/tree/master/Passwords",
+    "https://github.com/HaveIBeenPwned/PwnedPasswordsDownloader"
+  ],
+  "total": 259,
+  "passed": 259,
+  "failed": 0,
+  "trend_regressions": [
+    "trend_stronger_label passphrase_xkcd: weak -> very_strong"
+  ],
+  "label_histogram": {
+    "weak": 243,
+    "very_strong": 14,
+    "null": 1,
+    "strong": 1
+  },
+  "cases": [
+    {
+      "id": "edge_iloveyou",
+      "password": "iloveyou",
+      "tags": [
+        "edge-article",
+        "phrase"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 105.0,
+      "strength_bits": 6.714245517666122,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "edge_ichliebedich",
+      "password": "ichliebedich",
+      "tags": [
+        "edge-article",
+        "multilingual",
+        "de"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 13521.0,
+      "strength_bits": 13.722914235436516,
+      "keyspace_bits": 56.405276617693104,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "edge_alphabet",
+      "password": "abcdefghijklmnopqrstuvwxyz",
+      "tags": [
+        "edge-article",
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 169107.0,
+      "strength_bits": 17.367576854209943,
+      "keyspace_bits": 122.21143267166839,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "edge_alphabet_upper",
+      "password": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "tags": [
+        "edge-article",
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 169107.0,
+      "strength_bits": 17.367576854209943,
+      "keyspace_bits": 122.21143267166839,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "digits_sequential",
+      "password": "1234567890",
+      "tags": [
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1159.0,
+      "strength_bits": 10.178664851006472,
+      "keyspace_bits": 33.219280948873624,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "digits_reverse",
+      "password": "9876543210",
+      "tags": [
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10150.0,
+      "strength_bits": 13.309192106959902,
+      "keyspace_bits": 33.219280948873624,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "common_password",
+      "password": "password",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1.0,
+      "strength_bits": 0.0,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "common_password1",
+      "password": "password1",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 621.0,
+      "strength_bits": 9.278449458220482,
+      "keyspace_bits": 46.529325012980806,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "qwerty",
+      "password": "qwerty",
+      "tags": [
+        "keyboard"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5.0,
+      "strength_bits": 2.321928094887362,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "qwertyuiop",
+      "password": "qwertyuiop",
+      "tags": [
+        "keyboard",
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2102.0,
+      "strength_bits": 11.037546953962178,
+      "keyspace_bits": 47.004397181410916,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "jetaime",
+      "password": "jetaime",
+      "tags": [
+        "multilingual",
+        "fr"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10448.0,
+      "strength_bits": 13.350939181546432,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tiamo",
+      "password": "tiamo",
+      "tags": [
+        "multilingual",
+        "it"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 18123.0,
+      "strength_bits": 14.145534171957715,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tequiero",
+      "password": "tequiero",
+      "tags": [
+        "multilingual",
+        "es"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10584.0,
+      "strength_bits": 13.369597346278677,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "admin",
+      "password": "admin",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 740.0,
+      "strength_bits": 9.531381460516313,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "letmein",
+      "password": "letmein",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 11.0,
+      "strength_bits": 3.4594316186372973,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "passw0rd_leet",
+      "password": "P@ssw0rd1",
+      "tags": [
+        "leet",
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 386558.0,
+      "strength_bits": 18.560325369918292,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "repeats",
+      "password": "aaaaaaaaaa",
+      "tags": [
+        "repeat"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10483.0,
+      "strength_bits": 13.35576402254724,
+      "keyspace_bits": 47.004397181410916,
+      "reasons": [
+        "known_from_training",
+        "repeated_chars",
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "summer2024",
+      "password": "Summer2024",
+      "tags": [
+        "date"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 108250044.11766219,
+      "strength_bits": 26.689792372026137,
+      "keyspace_bits": 59.54196310386875,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "welcome1bang",
+      "password": "Welcome1!",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 102295.0,
+      "strength_bits": 16.642376104842707,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "empty",
+      "password": "",
+      "tags": [
+        "edge"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1.0,
+      "strength_bits": 0.0,
+      "keyspace_bits": 0.0,
+      "reasons": [
+        "empty_password"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "short_a",
+      "password": "a",
+      "tags": [
+        "short"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10202.0,
+      "strength_bits": 13.316564385396942,
+      "keyspace_bits": 4.700439718141092,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "short_ab",
+      "password": "ab",
+      "tags": [
+        "short"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 47484.0,
+      "strength_bits": 15.535153850693858,
+      "keyspace_bits": 9.400879436282183,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "passphrase_xkcd",
+      "password": "correcthorsebatterystaple",
+      "tags": [
+        "passphrase"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 2.4354631859519853e+26,
+      "strength_bits": 87.65432664288132,
+      "keyspace_bits": 117.51099295352729,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "randomish_symbol",
+      "password": "xK9#mP2$vL7q",
+      "tags": [
+        "strongish"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 2.7876382278045555e+33,
+      "strength_bits": 111.10267047555315,
+      "keyspace_bits": 78.65506622013166,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "strong_passphrase_punct",
+      "password": "Correct-Horse-Battery-Staple-9!",
+      "tags": [
+        "strongish"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 9.876723031407419e+60,
+      "strength_bits": 202.61971814694036,
+      "keyspace_bits": 203.19225440200677,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "no_model_charset_only",
+      "password": "abcdefghijklmnopqrstuvwxyz",
+      "tags": [
+        "no-model"
+      ],
+      "mode": "offline_no_model",
+      "passed": true,
+      "failures": [],
+      "label": null,
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 122.21143267166839,
+      "reasons": [
+        "model_skipped"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "zyxwvutsrqponmlkjihgfedcba",
+      "password": "zyxwvutsrqponmlkjihgfedcba",
+      "tags": [
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8.3833014935056e+40,
+      "strength_bits": 135.94464231033777,
+      "keyspace_bits": 122.21143267166839,
+      "reasons": [
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "1qaz2wsx",
+      "password": "1qaz2wsx",
+      "tags": [
+        "keyboard"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 662.0,
+      "strength_bits": 9.370687406807217,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "password123",
+      "password": "password123",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10103.0,
+      "strength_bits": 13.30249613217652,
+      "keyspace_bits": 56.86917501586544,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "iloveyou123",
+      "password": "iloveyou123",
+      "tags": [
+        "phrase"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 11711.0,
+      "strength_bits": 13.515576652095957,
+      "keyspace_bits": 56.86917501586544,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "dragon",
+      "password": "dragon",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7.0,
+      "strength_bits": 2.807354922057604,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "monkey",
+      "password": "monkey",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 12.0,
+      "strength_bits": 3.584962500721156,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "asdfghjkl",
+      "password": "asdfghjkl",
+      "tags": [
+        "keyboard"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2131.0,
+      "strength_bits": 11.057314877782703,
+      "keyspace_bits": 42.303957463269825,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "changeme1",
+      "password": "Changeme1",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 13230.0,
+      "strength_bits": 13.69152544116604,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "company2024",
+      "password": "Company2024!",
+      "tags": [
+        "corporate"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "strong",
+      "guess_number": 87579040708050.81,
+      "strength_bits": 46.31565088093626,
+      "keyspace_bits": 78.65506622013166,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "trustno1",
+      "password": "trustno1",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 29.0,
+      "strength_bits": 4.857980995127572,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "abc123",
+      "password": "abc123",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 14.0,
+      "strength_bits": 3.807354922057604,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "partial_alphabet",
+      "password": "abcdefghijklmnop",
+      "tags": [
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 167773.0,
+      "strength_bits": 17.35615103347853,
+      "keyspace_bits": 75.20703549025747,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "hello",
+      "password": "hello",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 66.0,
+      "strength_bits": 6.044394119358453,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "football",
+      "password": "football",
+      "tags": [
+        "common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10.0,
+      "strength_bits": 3.321928094887362,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0000",
+      "password": "shua",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1825.0,
+      "strength_bits": 10.833680748654741,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0001",
+      "password": "rock",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 123.16322747217508,
+      "strength_bits": 6.944427768352366,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0002",
+      "password": "mantis",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4507.0,
+      "strength_bits": 12.137951734715358,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0003",
+      "password": "5050",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4013.0,
+      "strength_bits": 11.970465440779995,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0004",
+      "password": "subway",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3658.0,
+      "strength_bits": 11.836839359748716,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0005",
+      "password": "llllll",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2287.0,
+      "strength_bits": 11.159240650411672,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training",
+        "repeated_chars",
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0006",
+      "password": "showme",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1680.0,
+      "strength_bits": 10.714245517666123,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0007",
+      "password": "vols",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8574.357717610479,
+      "strength_bits": 13.06581289153674,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0008",
+      "password": "sammie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1425.0,
+      "strength_bits": 10.476746203939467,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0009",
+      "password": "terran",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9675.0,
+      "strength_bits": 13.240045945919135,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0010",
+      "password": "cocksucker",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6913.0,
+      "strength_bits": 12.75509621030718,
+      "keyspace_bits": 47.004397181410916,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0011",
+      "password": "gibson",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 521.0,
+      "strength_bits": 9.025139562278508,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0012",
+      "password": "87654321",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 489.0,
+      "strength_bits": 8.933690654952233,
+      "keyspace_bits": 26.575424759098897,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0013",
+      "password": "kinky",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1536.0,
+      "strength_bits": 10.584962500721156,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0014",
+      "password": "petra",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3583.0,
+      "strength_bits": 11.806952328210736,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0015",
+      "password": "sunnyday",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3812.0,
+      "strength_bits": 11.896332403909941,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0016",
+      "password": "prague",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8280.0,
+      "strength_bits": 13.015415052386688,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0017",
+      "password": "jeepjeep",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9864.0,
+      "strength_bits": 13.26795708440284,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training",
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0018",
+      "password": "jordan23",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 435.0,
+      "strength_bits": 8.76487159073609,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0019",
+      "password": "ffffff1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9196.0,
+      "strength_bits": 13.16679075071818,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training",
+        "repeated_chars"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0020",
+      "password": "1959",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3258.0,
+      "strength_bits": 11.669770888525518,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0021",
+      "password": "montana1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8929.0,
+      "strength_bits": 13.124282894966601,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0022",
+      "password": "barney1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6874.0,
+      "strength_bits": 12.746934136372298,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0023",
+      "password": "businessbabe",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3612.0,
+      "strength_bits": 11.818582177480858,
+      "keyspace_bits": 56.405276617693104,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0024",
+      "password": "xmas",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7360.0,
+      "strength_bits": 12.845490050944376,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0025",
+      "password": "shakira",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9655.0,
+      "strength_bits": 13.237060543838012,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0026",
+      "password": "ramsey",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4558.0,
+      "strength_bits": 12.154185209265297,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0027",
+      "password": "guitar",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 107.0,
+      "strength_bits": 6.741466986401147,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0028",
+      "password": "trance",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2616.0,
+      "strength_bits": 11.353146825498083,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0029",
+      "password": "hilary",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6925.0,
+      "strength_bits": 12.757598355823912,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0030",
+      "password": "pippin",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5575.0,
+      "strength_bits": 12.44475608969503,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0031",
+      "password": "parola",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4553.0,
+      "strength_bits": 12.152601744019199,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0032",
+      "password": "heart",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2548.0,
+      "strength_bits": 11.3151495622563,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0033",
+      "password": "thursday",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3528.0,
+      "strength_bits": 11.784634845557521,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0034",
+      "password": "square",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5515.0,
+      "strength_bits": 12.429145170478744,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0035",
+      "password": "frank1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1675.0,
+      "strength_bits": 10.709945380232497,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0036",
+      "password": "funtime",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1520.0,
+      "strength_bits": 10.569855608330949,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0037",
+      "password": "choke",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6225.0,
+      "strength_bits": 12.603858121842805,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0038",
+      "password": "network",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1585.0,
+      "strength_bits": 10.63026712502677,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0039",
+      "password": "strawber",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5882.0,
+      "strength_bits": 12.522091068887065,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0040",
+      "password": "playboy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5636.0,
+      "strength_bits": 12.460455896309636,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0041",
+      "password": "allman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9892.0,
+      "strength_bits": 13.272046524389937,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0042",
+      "password": "mattie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4334.0,
+      "strength_bits": 12.081483438093674,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0043",
+      "password": "marley",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 712.0,
+      "strength_bits": 9.475733430966399,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0044",
+      "password": "done",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5220.416794644571,
+      "strength_bits": 12.349949279879116,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0045",
+      "password": "zimmer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8786.0,
+      "strength_bits": 13.100990784092762,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0046",
+      "password": "mollie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2046.0,
+      "strength_bits": 10.99859042974533,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0047",
+      "password": "field",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6202.0,
+      "strength_bits": 12.598517810612622,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0048",
+      "password": "highland",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1292.0,
+      "strength_bits": 10.335390354693924,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0049",
+      "password": "paige",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9045.0,
+      "strength_bits": 13.142904787508604,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0050",
+      "password": "audia4",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4804.0,
+      "strength_bits": 12.230020435705635,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0051",
+      "password": "bestbuy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5926.0,
+      "strength_bits": 12.532842910961282,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0052",
+      "password": "sundown",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9460.0,
+      "strength_bits": 13.207624468226758,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0053",
+      "password": "milano",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3151.0,
+      "strength_bits": 11.62159403901754,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0054",
+      "password": "access14",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1140.0,
+      "strength_bits": 10.154818109052105,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0055",
+      "password": "remember",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 751.0,
+      "strength_bits": 9.552669097514272,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0056",
+      "password": "kool",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1017.7974685407247,
+      "strength_bits": 9.991234792832532,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0057",
+      "password": "xyz123",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4742.0,
+      "strength_bits": 12.211279947482009,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0058",
+      "password": "burger",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1308.0,
+      "strength_bits": 10.353146825498083,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0059",
+      "password": "starfire",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3815.0,
+      "strength_bits": 11.897467341721892,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0060",
+      "password": "shen",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1655.0,
+      "strength_bits": 10.69261550169458,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0061",
+      "password": "deputy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6228.0,
+      "strength_bits": 12.604553229079038,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0062",
+      "password": "pablo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4555.0,
+      "strength_bits": 12.153235338689413,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0063",
+      "password": "lucas1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7429.0,
+      "strength_bits": 12.858952310750938,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0064",
+      "password": "charlotte",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5978.0,
+      "strength_bits": 12.545447181678094,
+      "keyspace_bits": 42.303957463269825,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0065",
+      "password": "inferno",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2665.0,
+      "strength_bits": 11.379919817646538,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0066",
+      "password": "sambo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6066.0,
+      "strength_bits": 12.56652978262417,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0067",
+      "password": "sloppy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5821.0,
+      "strength_bits": 12.507051302247916,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0068",
+      "password": "squerting",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3433.0,
+      "strength_bits": 11.745254141957256,
+      "keyspace_bits": 42.303957463269825,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0069",
+      "password": "francois",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4375.0,
+      "strength_bits": 12.095067301607054,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0070",
+      "password": "butt",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1170.0,
+      "strength_bits": 10.192292814470767,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0071",
+      "password": "booyah",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9981.0,
+      "strength_bits": 13.284968651604022,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0072",
+      "password": "hustler",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2804.0,
+      "strength_bits": 11.453270634010623,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0073",
+      "password": "bucker",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8752.0,
+      "strength_bits": 13.095397022792557,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0074",
+      "password": "hambone",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4011.0,
+      "strength_bits": 11.96974625081451,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0075",
+      "password": "valhalla",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2678.0,
+      "strength_bits": 11.386940245324311,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0076",
+      "password": "0101",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1918.0745320610386,
+      "strength_bits": 10.905443065990859,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0077",
+      "password": "quebec",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6217.0,
+      "strength_bits": 12.602002863537445,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0078",
+      "password": "rancid",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4423.0,
+      "strength_bits": 12.110809526898654,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0079",
+      "password": "17011701",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9126.0,
+      "strength_bits": 13.155766938445653,
+      "keyspace_bits": 26.575424759098897,
+      "reasons": [
+        "known_from_training",
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0080",
+      "password": "george1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3599.0,
+      "strength_bits": 11.813380386924727,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0081",
+      "password": "pipeline",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5314.0,
+      "strength_bits": 12.375582512490507,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0082",
+      "password": "shooter",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 917.0,
+      "strength_bits": 9.840777923595054,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0083",
+      "password": "chickens",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3753.0,
+      "strength_bits": 11.873828574886977,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0084",
+      "password": "888888",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 526.0,
+      "strength_bits": 9.038918989292302,
+      "keyspace_bits": 19.931568569324174,
+      "reasons": [
+        "known_from_training",
+        "repeated_chars",
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0085",
+      "password": "magnet",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5169.0,
+      "strength_bits": 12.335669486946104,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0086",
+      "password": "2580",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6573.0,
+      "strength_bits": 12.682336269711378,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0087",
+      "password": "cygnus",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4387.0,
+      "strength_bits": 12.09901899101923,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0088",
+      "password": "stacey",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1085.0,
+      "strength_bits": 10.083479327331842,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0089",
+      "password": "wolf359",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3457.0,
+      "strength_bits": 11.7553048882624,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0090",
+      "password": "blackice",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9293.0,
+      "strength_bits": 13.181928692512578,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0091",
+      "password": "hakr",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5156.0,
+      "strength_bits": 12.332036548361652,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0092",
+      "password": "homemade",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3484.0,
+      "strength_bits": 11.766528908598865,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0093",
+      "password": "mongo",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8180.0,
+      "strength_bits": 12.997885127829111,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0094",
+      "password": "irishman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6483.0,
+      "strength_bits": 12.662445857580664,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0095",
+      "password": "galant",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7518.0,
+      "strength_bits": 12.876133200043016,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0096",
+      "password": "soccer1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2341.0,
+      "strength_bits": 11.192909219112012,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0097",
+      "password": "azzer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4340.0,
+      "strength_bits": 12.083479327331842,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0098",
+      "password": "qwaszx",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2288.0,
+      "strength_bits": 11.159871336778389,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0099",
+      "password": "rhino",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4041.0,
+      "strength_bits": 11.98049663618346,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0100",
+      "password": "foreman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9198.0,
+      "strength_bits": 13.167104482379933,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0101",
+      "password": "1117",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8831.0,
+      "strength_bits": 13.108361098906638,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0102",
+      "password": "desiree",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4305.0,
+      "strength_bits": 12.071797522284207,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0103",
+      "password": "tracie",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9578.0,
+      "strength_bits": 13.225508720236002,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0104",
+      "password": "moto",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5903.660516092487,
+      "strength_bits": 12.527394047755608,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0105",
+      "password": "lunchbox",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9561.0,
+      "strength_bits": 13.222945804499009,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0106",
+      "password": "loose",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6544.0,
+      "strength_bits": 12.67595703294175,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0107",
+      "password": "bigbob",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5931.0,
+      "strength_bits": 12.534059656450363,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0108",
+      "password": "foot",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2855.761814963771,
+      "strength_bits": 11.479659940954745,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0109",
+      "password": "wisdom",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2267.0,
+      "strength_bits": 11.146568675740786,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0110",
+      "password": "4226",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8349.0,
+      "strength_bits": 13.027387694052763,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0111",
+      "password": "1113",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8086.0,
+      "strength_bits": 12.981210488271694,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0112",
+      "password": "father",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1490.0,
+      "strength_bits": 10.541096615349524,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0113",
+      "password": "friend",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 772.0,
+      "strength_bits": 9.59245703726808,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0114",
+      "password": "florence",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1797.0,
+      "strength_bits": 10.811374693509942,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0115",
+      "password": "ricky",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2505.0,
+      "strength_bits": 11.290594888082572,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0116",
+      "password": "kingpin",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2622.0,
+      "strength_bits": 11.356451970221755,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0117",
+      "password": "buzzer",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6917.0,
+      "strength_bits": 12.755930741084399,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0118",
+      "password": "cyzkhw",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9772.0,
+      "strength_bits": 13.254438148267257,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0119",
+      "password": "integra",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1041.0,
+      "strength_bits": 10.023754353299417,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0120",
+      "password": "enternow",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6305.0,
+      "strength_bits": 12.622280655215583,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0121",
+      "password": "bigben",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6253.0,
+      "strength_bits": 12.610332801911134,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0122",
+      "password": "coach1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9764.0,
+      "strength_bits": 13.253256579781153,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0123",
+      "password": "delaney",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7669.0,
+      "strength_bits": 12.90482275429421,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0124",
+      "password": "toes",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8670.0,
+      "strength_bits": 13.081816278109198,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0125",
+      "password": "gobears",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4120.0,
+      "strength_bits": 12.00842862207058,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0126",
+      "password": "abacus",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9065.0,
+      "strength_bits": 13.14609130463152,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0127",
+      "password": "gandalf",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 189.0,
+      "strength_bits": 7.562242424221073,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0128",
+      "password": "13579",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1877.0,
+      "strength_bits": 10.874212934830874,
+      "keyspace_bits": 16.609640474436812,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0129",
+      "password": "ship",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8798.0,
+      "strength_bits": 13.102959885910124,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0130",
+      "password": "haha",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4372.0,
+      "strength_bits": 12.094077685671905,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0131",
+      "password": "soprano",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 5574.0,
+      "strength_bits": 12.44449728710381,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0132",
+      "password": "pian",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1828.0,
+      "strength_bits": 10.83605035505807,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0133",
+      "password": "figaro",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4809.0,
+      "strength_bits": 12.231521210875703,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0134",
+      "password": "kenobi",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7124.0,
+      "strength_bits": 12.798471801101618,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0135",
+      "password": "warriors",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2592.0,
+      "strength_bits": 11.339850002884624,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0136",
+      "password": "tribble",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 7434.0,
+      "strength_bits": 12.859922972861758,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0137",
+      "password": "123456789",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 54.0,
+      "strength_bits": 5.754887502163468,
+      "keyspace_bits": 29.89735285398626,
+      "reasons": [
+        "known_from_training",
+        "sequential_run"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0138",
+      "password": "motley",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4316.0,
+      "strength_bits": 12.075479149488016,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0139",
+      "password": "tammy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8202.0,
+      "strength_bits": 13.001760028327217,
+      "keyspace_bits": 31.019550008653873,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0140",
+      "password": "betty",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2928.0,
+      "strength_bits": 11.515699838284043,
+      "keyspace_bits": 23.502198590705458,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0141",
+      "password": "moonman",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8318.0,
+      "strength_bits": 13.022020969646356,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0142",
+      "password": "qian",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1744.0,
+      "strength_bits": 10.768184324776927,
+      "keyspace_bits": 18.801758872564367,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0143",
+      "password": "yyyyyyy",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4890.0,
+      "strength_bits": 12.255618749839597,
+      "keyspace_bits": 32.90307802698764,
+      "reasons": [
+        "known_from_training",
+        "repeated_chars"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0144",
+      "password": "nogard",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 9978.0,
+      "strength_bits": 13.284534954008425,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0145",
+      "password": "zaq12wsx",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 3259.0,
+      "strength_bits": 11.670213636738564,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0146",
+      "password": "aspire",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 6127.0,
+      "strength_bits": 12.58096513597733,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0147",
+      "password": "stone55",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 2647.0,
+      "strength_bits": 11.3701424794954,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0148",
+      "password": "alpina",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8838.0,
+      "strength_bits": 13.109504215757006,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "seclists_0149",
+      "password": "badboy1",
+      "tags": [
+        "seclists",
+        "seclists-common"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8690.0,
+      "strength_bits": 13.085140461701762,
+      "keyspace_bits": 36.18947501009619,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "hibp_offline_password",
+      "password": "password",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 52372427,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "hibp_offline_123456",
+      "password": "123456",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 19.931568569324174,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 210461208,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "hibp_offline_qwerty",
+      "password": "qwerty",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 30812897,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "hibp_offline_iloveyou",
+      "password": "iloveyou",
+      "tags": [
+        "hibp",
+        "offline",
+        "edge-article"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 7007935,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_novel_random_16",
+      "password": "kR7!mQx#9vLp$2nW",
+      "tags": [
+        "tricky",
+        "strongish",
+        "novel"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 1.135220514215954e+46,
+      "strength_bits": 152.9916649300576,
+      "keyspace_bits": 104.8734216268422,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_novel_passphrase",
+      "password": "orchid-waltz-mercury-lantern-84!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "passphrase"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 8.882387814919024e+51,
+      "strength_bits": 172.56928040160375,
+      "keyspace_bits": 194.79881092001085,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_long_random_24",
+      "password": "bN4$wE8*qT1!zY6@uI3#oP9",
+      "tags": [
+        "tricky",
+        "strongish",
+        "novel"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 2.2306911454407478e+67,
+      "strength_bits": 223.72667313379347,
+      "keyspace_bits": 150.75554358858565,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_german_novel",
+      "password": "nebelwald-klangfarbe-7x!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "multilingual"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 1.135220514215954e+46,
+      "strength_bits": 152.9916649300576,
+      "keyspace_bits": 146.09910819000814,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_leet_password",
+      "password": "P@ssw0rd!",
+      "tags": [
+        "tricky",
+        "leet",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 119515,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_keyboard_walk",
+      "password": "qwertyuiopasdfgh",
+      "tags": [
+        "tricky",
+        "keyboard",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 75.20703549025747,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 22870,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_welcome_year",
+      "password": "Welcome2024!",
+      "tags": [
+        "tricky",
+        "date",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 78.65506622013166,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 6571,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_base64_password",
+      "password": "cGFzc3dvcmQ=",
+      "tags": [
+        "tricky",
+        "encoding",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 78.65506622013166,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 2891,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_double_password",
+      "password": "passwordpassword",
+      "tags": [
+        "tricky",
+        "common",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 75.20703549025747,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 50572,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_iloveyou_camel",
+      "password": "ILoveYou123",
+      "tags": [
+        "tricky",
+        "phrase",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 65.49615941425563,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 2556,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_repeat_block",
+      "password": "abcabcabcabc",
+      "tags": [
+        "tricky",
+        "pattern",
+        "hibp"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 56.405276617693104,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1644,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_nil_uuid",
+      "password": "550e8400-e29b-41d4-a716-446655440000",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4.603613940134224e+69,
+      "strength_bits": 231.4158054011137,
+      "keyspace_bits": 219.14866228501222,
+      "reasons": [
+        "class_run",
+        "structured_uuid"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_fr_novel",
+      "password": "brume-violon-quatorze-9!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "fr"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 3.684128955412483e+42,
+      "strength_bits": 141.40230354617677,
+      "keyspace_bits": 146.09910819000814,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_es_novel",
+      "password": "niebla-castillo-farola-3#",
+      "tags": [
+        "tricky",
+        "strongish",
+        "es"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 2.5163463697440295e+35,
+      "strength_bits": 117.59881384085784,
+      "keyspace_bits": 152.18657103125847,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_jp_romaji_novel",
+      "password": "kasumi-tsubaki-yoru-7!",
+      "tags": [
+        "tricky",
+        "strongish",
+        "ja"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 6.416377685073057e+41,
+      "strength_bits": 138.88081095554517,
+      "keyspace_bits": 133.92418250750745,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_diceware5",
+      "password": "maple.quartz.ember.willow.92",
+      "tags": [
+        "tricky",
+        "strongish",
+        "passphrase"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 5.481870657484277e+44,
+      "strength_bits": 148.61950446380462,
+      "keyspace_bits": 170.44895955500948,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_mixed_script_novel",
+      "password": "Securit\u00e9-\u03949!kLm",
+      "tags": [
+        "tricky",
+        "strongish",
+        "unicode"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 7.451091682425134e+33,
+      "strength_bits": 112.52107894604418,
+      "keyspace_bits": 98.77443751081734,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_emoji_suffix",
+      "password": "orchid-lantern-84!",
+      "tags": [
+        "tricky",
+        "strongish"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 4.031690604162116e+28,
+      "strength_bits": 95.02537158611857,
+      "keyspace_bits": 109.57433114250611,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_long_hex_novel",
+      "password": "a7f3c91e0b2d4468e1a9c0ff",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "very_strong",
+      "guess_number": 4.711287491125234e+54,
+      "strength_bits": 181.62023849442173,
+      "keyspace_bits": 124.07820003461549,
+      "reasons": [],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_letmein1",
+      "password": "Letmein1!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 40129,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_monkey1",
+      "password": "Monkey123",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 101017,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_dragon2024",
+      "password": "Dragon2024",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 59.54196310386875,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 3124,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_adminadmin",
+      "password": "adminadmin",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 47.004397181410916,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 586051,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_rootroot",
+      "password": "rootroot",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 60665,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_qazwsx",
+      "password": "qazwsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 28.202638308846552,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 2942316,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_zaq12wsx",
+      "password": "zaq12wsx",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1844354,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_1q2w3e4r",
+      "password": "1q2w3e4r",
+      "tags": [
+        "tricky",
+        "keyboard"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 41.3594000115385,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 7322046,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_starwars",
+      "password": "Starwars1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 170645,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_batman",
+      "password": "Batman123",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 99717,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_pokemon",
+      "password": "Pikachu1",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 47.633570483095,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 55377,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_harry",
+      "password": "HarryPotter",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 62.70483689955201,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 47057,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_matrix",
+      "password": "Matrix1999",
+      "tags": [
+        "tricky",
+        "pop"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 59.54196310386875,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1746,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_spring2023",
+      "password": "Spring2023!",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 72.10047736845401,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 5831,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_january1",
+      "password": "January1",
+      "tags": [
+        "tricky",
+        "date"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 47.633570483095,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 29875,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_phone_us",
+      "password": "5551234567",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 33.219280948873624,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 189,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_pin_1234",
+      "password": "1234",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 13.287712379549449,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 30365962,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_pin_000000",
+      "password": "000000",
+      "tags": [
+        "tricky",
+        "pin"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 19.931568569324174,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 12866377,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_emailish",
+      "password": "user@email.com",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 82.01173393178601,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 58,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_firstname_year",
+      "password": "Jennifer1985",
+      "tags": [
+        "tricky",
+        "identity"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 71.45035572464249,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1397,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_lorem",
+      "password": "LoremIpsum",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 57.004397181410916,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 379,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_changeme!",
+      "password": "ChangeMe!",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 57.530856805008845,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 3900,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_passw0rd!",
+      "password": "Passw0rd!",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 58.99129966509874,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 175727,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_p@$$w0rd",
+      "password": "P@$$w0rd",
+      "tags": [
+        "tricky",
+        "leet"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 52.4367108134211,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 779178,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_iloveyou!",
+      "password": "Iloveyou!",
+      "tags": [
+        "tricky",
+        "phrase"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 57.530856805008845,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 21471,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_je_taime",
+      "password": "JeT'aime",
+      "tags": [
+        "tricky",
+        "phrase",
+        "fr"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 51.138539382230086,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 117,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_tequiero1",
+      "password": "Tequiero1",
+      "tags": [
+        "tricky",
+        "phrase",
+        "es"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 53.587766793481876,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 43390,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_spaces_password",
+      "password": "pass word",
+      "tags": [
+        "tricky",
+        "common"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 42.793987519471216,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 5928,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_all_ones",
+      "password": "11111111",
+      "tags": [
+        "tricky",
+        "repeat"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 26.575424759098897,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 3654051,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_hexspeak",
+      "password": "deadbeef",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 2621,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_cafebabe",
+      "password": "cafebabe",
+      "tags": [
+        "tricky",
+        "hex"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 871,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_router_default",
+      "password": "admin1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 46.529325012980806,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1139016,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_wifi_default",
+      "password": "password1234",
+      "tags": [
+        "tricky",
+        "default"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 62.039100017307746,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 443397,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_ipv4",
+      "password": "192.168.1.1",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 59.315491650566365,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 44698,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_mac",
+      "password": "00:1A:2B:3C:4D:5E",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 4.147372977005298e+49,
+      "strength_bits": 164.82667444542963,
+      "keyspace_bits": 103.48686830125577,
+      "reasons": [
+        "structured_mac"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_jwt_header",
+      "password": "eyJhbGciOiJIUzI1NiJ9",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 119.0839262077375,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 5,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_creditcardish",
+      "password": "4111111111111111",
+      "tags": [
+        "tricky",
+        "digits"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 53.150849518197795,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 172,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_sqlish",
+      "password": "' OR 1=1 --",
+      "tags": [
+        "tricky",
+        "injection"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 67.19376902455986,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 324,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_pathish",
+      "password": "C:\\Windows\\System32",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 124.53718818187511,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 41,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_md5_looking",
+      "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+      "tags": [
+        "tricky",
+        "hash"
+      ],
+      "mode": "offline_hibp",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": null,
+      "strength_bits": null,
+      "keyspace_bits": 165.437600046154,
+      "reasons": [
+        "pwned_password"
+      ],
+      "aborted": true,
+      "breach": {
+        "pwned": true,
+        "occurrences": 1832,
+        "source": "hibp_offline"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_constant_gap",
+      "password": "acegikmo",
+      "tags": [
+        "tricky",
+        "sequential"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 282941214655.7924,
+      "strength_bits": 38.0417113860967,
+      "keyspace_bits": 37.603517745128734,
+      "reasons": [
+        "constant_gap"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_tiled_xyz",
+      "password": "xyzxyzxyz",
+      "tags": [
+        "tricky",
+        "pattern"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 10287039019.151278,
+      "strength_bits": 33.26010873119145,
+      "keyspace_bits": 42.303957463269825,
+      "reasons": [
+        "tiled_fragment"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_hex_digest_offline",
+      "password": "abcdef0123456789abcdef0123456789abcdef01",
+      "tags": [
+        "tricky",
+        "hash",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 1.3550013557384192e+31,
+      "strength_bits": 103.41806523656791,
+      "keyspace_bits": 206.7970000576925,
+      "reasons": [
+        "sequential_run",
+        "structured_hex"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_ipv4_structure",
+      "password": "10.0.0.42",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 8481342592686.03,
+      "strength_bits": 42.94742979948549,
+      "keyspace_bits": 48.530856805008845,
+      "reasons": [
+        "structured_ipv4"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_hash_prefix_rockyou",
+      "password": "#1bitch",
+      "tags": [
+        "tricky",
+        "rockyou",
+        "known"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 12830.0,
+      "strength_bits": 13.647233549977045,
+      "keyspace_bits": 42.61223988875237,
+      "reasons": [
+        "known_from_training"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    },
+    {
+      "id": "tricky_whitespace_only",
+      "password": "     ",
+      "tags": [
+        "tricky",
+        "structured"
+      ],
+      "mode": "offline",
+      "passed": true,
+      "failures": [],
+      "label": "weak",
+      "guess_number": 77598.00255584547,
+      "strength_bits": 16.243731896138854,
+      "keyspace_bits": 0.0,
+      "reasons": [
+        "whitespace_only"
+      ],
+      "aborted": false,
+      "breach": {
+        "pwned": false,
+        "occurrences": 0,
+        "source": "skipped"
+      },
+      "error": null
+    }
+  ]
+}

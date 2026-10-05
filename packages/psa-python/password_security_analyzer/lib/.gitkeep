@@ -1,0 +1,2 @@
+# password-security-analyzer (Python)
+# Build native lib first: pwsh scripts/build_ffi.ps1

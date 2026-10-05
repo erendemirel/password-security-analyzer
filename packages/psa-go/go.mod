@@ -1,0 +1,3 @@
+module github.com/example/password-security-analyzer/packages/psa-go
+
+go 1.21

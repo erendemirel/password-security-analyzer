@@ -1,0 +1,25 @@
+{
+  "name": "@psa/password-security-analyzer",
+  "version": "0.1.0",
+  "description": "Advisory password strength analyzer (HIBP + Markov/Monte Carlo). Does not authorize accounts.",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "pkg/"
+  ],
+  "scripts": {
+    "build:wasm": "wasm-pack build ../../crates/psa-wasm --target bundler --out-dir ../../packages/psa-js/pkg --release",
+    "build:wasm:nodejs": "wasm-pack build ../../crates/psa-wasm --target nodejs --out-dir ../../packages/psa-js/pkg-node --release"
+  },
+  "keywords": [
+    "password",
+    "security",
+    "hibp",
+    "advisory",
+    "strength"
+  ],
+  "license": "MIT"
+}

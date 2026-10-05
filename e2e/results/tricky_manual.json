@@ -1,0 +1,303 @@
+{
+  "cases": [
+    {
+      "id": "novel_random_16",
+      "password": "kR7!mQx#9vLp$2nW",
+      "intent": "novel random \u2192 very_strong / strong",
+      "hope": "strong+",
+      "label": "very_strong",
+      "strength_bits": 152.9916649300576,
+      "guess_number": 1.135220514215954e+46,
+      "keyspace_bits": 104.8734216268422,
+      "aborted": false,
+      "pwned": false,
+      "occurrences": 0,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "novel_passphrase_uncommon",
+      "password": "orchid-waltz-mercury-lantern-84!",
+      "intent": "unpublished diceware-ish phrase \u2192 strong+",
+      "hope": "strong+",
+      "label": "very_strong",
+      "strength_bits": 172.56928040160375,
+      "guess_number": 8.882387814919024e+51,
+      "keyspace_bits": 194.79881092001085,
+      "aborted": false,
+      "pwned": false,
+      "occurrences": 0,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "long_random_24",
+      "password": "bN4$wE8*qT1!zY6@uI3#oP9",
+      "intent": "long random \u2192 very_strong",
+      "hope": "very_strong",
+      "label": "very_strong",
+      "strength_bits": 223.72667313379347,
+      "guess_number": 2.2306911454407478e+67,
+      "keyspace_bits": 150.75554358858565,
+      "aborted": false,
+      "pwned": false,
+      "occurrences": 0,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "leet_password",
+      "password": "P@ssw0rd!",
+      "intent": "classic leet of password \u2192 weak (HIBP or known)",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 58.99129966509874,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 119515,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "keyboard_walk",
+      "password": "qwertyuiopasdfgh",
+      "intent": "keyboard row walk \u2192 weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 75.20703549025747,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 22870,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "year_suffix_common",
+      "password": "Welcome2024!",
+      "intent": "common word + year + bang \u2192 weak/fair",
+      "hope": "weak-fair",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 78.65506622013166,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 6571,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "almost_alphabet",
+      "password": "abcdefghijklmno",
+      "intent": "15-char alpha run \u2192 sequential demotion weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 70.50659577211637,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 10871,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "reversed_digits",
+      "password": "987654321",
+      "intent": "reverse digit run \u2192 weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 29.89735285398626,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 5011884,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "repeat_block",
+      "password": "abcabcabcabc",
+      "intent": "repeated block \u2014 may not hit sequential; expect not very_strong",
+      "hope": "not_very_strong",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 56.405276617693104,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 1644,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "spaces_phrase_common",
+      "password": "i love you",
+      "intent": "spaced common phrase \u2192 weak if known/pwned",
+      "hope": "weak-fair",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 47.548875021634686,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 20372,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "camel_common",
+      "password": "ILoveYou123",
+      "intent": "camel + digits of iloveyou \u2192 weak/fair",
+      "hope": "weak-fair",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 65.49615941425563,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 2556,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "short_complex",
+      "password": "A1!b",
+      "intent": "short mixed charset \u2014 still weak by length/guesses",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 26.21835540671055,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 1,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "all_symbols_short",
+      "password": "!@#$%^&*",
+      "intent": "symbol run \u2014 often pwned / patterned \u2192 weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 40.0,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 47700,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "uuid_looking",
+      "password": "550e8400-e29b-41d4-a716-446655440000",
+      "intent": "UUID shape \u2192 weak via structured_uuid demotion",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": 231.4158054011137,
+      "guess_number": 4.603613940134224e+69,
+      "keyspace_bits": 219.14866228501222,
+      "aborted": false,
+      "pwned": false,
+      "occurrences": 0,
+      "reasons": [
+        "class_run",
+        "structured_uuid"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "base64ish_padding",
+      "password": "cGFzc3dvcmQ=",
+      "intent": "base64('password') \u2014 tricky; hope not very_strong",
+      "hope": "not_very_strong",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 78.65506622013166,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 2891,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "german_novel_phrase",
+      "password": "nebelwald-klangfarbe-7x!",
+      "intent": "German-ish novel compound \u2192 hopefully strong (not in lists)",
+      "hope": "strong+",
+      "label": "very_strong",
+      "strength_bits": 152.9916649300576,
+      "guess_number": 1.135220514215954e+46,
+      "keyspace_bits": 146.09910819000814,
+      "aborted": false,
+      "pwned": false,
+      "occurrences": 0,
+      "reasons": [],
+      "hope_met": true
+    },
+    {
+      "id": "insert_digits_mid",
+      "password": "pass4word",
+      "intent": "common with mid digit \u2192 weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 46.529325012980806,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 16188,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    },
+    {
+      "id": "double_word",
+      "password": "passwordpassword",
+      "intent": "doubled common \u2192 weak",
+      "hope": "weak",
+      "label": "weak",
+      "strength_bits": null,
+      "guess_number": null,
+      "keyspace_bits": 75.20703549025747,
+      "aborted": true,
+      "pwned": true,
+      "occurrences": 50572,
+      "reasons": [
+        "pwned_password"
+      ],
+      "hope_met": true
+    }
+  ]
+}

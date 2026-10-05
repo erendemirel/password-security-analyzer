@@ -1,0 +1,247 @@
+{
+  "description": "E2E corpus including Microsoft Edge Markov article cases (iloveyou / ichliebedich / alphabet). Expectations use max_label (label must not be stronger).",
+  "reference": "https://microsoftedge.github.io/edgevr/posts/Using-Markov-model-for-password-complexity-estimation-in-microsoft-edge/",
+  "cases": [
+    {
+      "id": "edge_iloveyou",
+      "password": "iloveyou",
+      "tags": ["edge-article", "phrase"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "edge_ichliebedich",
+      "password": "ichliebedich",
+      "tags": ["edge-article", "multilingual", "de"],
+      "expect": { "max_label": "weak", "reasons_any": ["known_from_training"] }
+    },
+    {
+      "id": "edge_alphabet",
+      "password": "abcdefghijklmnopqrstuvwxyz",
+      "tags": ["edge-article", "sequential"],
+      "expect": { "max_label": "weak", "reasons_any": ["sequential_run"] }
+    },
+    {
+      "id": "edge_alphabet_upper",
+      "password": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "tags": ["edge-article", "sequential"],
+      "expect": { "max_label": "weak", "reasons_any": ["sequential_run"] }
+    },
+    {
+      "id": "digits_sequential",
+      "password": "1234567890",
+      "tags": ["sequential"],
+      "expect": { "max_label": "weak", "reasons_any": ["sequential_run"] }
+    },
+    {
+      "id": "digits_reverse",
+      "password": "9876543210",
+      "tags": ["sequential"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "common_password",
+      "password": "password",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "common_password1",
+      "password": "password1",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "qwerty",
+      "password": "qwerty",
+      "tags": ["keyboard"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "qwertyuiop",
+      "password": "qwertyuiop",
+      "tags": ["keyboard", "sequential"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "jetaime",
+      "password": "jetaime",
+      "tags": ["multilingual", "fr"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "tiamo",
+      "password": "tiamo",
+      "tags": ["multilingual", "it"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "tequiero",
+      "password": "tequiero",
+      "tags": ["multilingual", "es"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "admin",
+      "password": "admin",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "letmein",
+      "password": "letmein",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "passw0rd_leet",
+      "password": "P@ssw0rd1",
+      "tags": ["leet", "common"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "repeats",
+      "password": "aaaaaaaaaa",
+      "tags": ["repeat"],
+      "expect": { "max_label": "weak", "reasons_any": ["repeated_chars"] }
+    },
+    {
+      "id": "summer2024",
+      "password": "Summer2024",
+      "tags": ["date"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "welcome1bang",
+      "password": "Welcome1!",
+      "tags": ["common"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "empty",
+      "password": "",
+      "tags": ["edge"],
+      "expect": { "max_label": "weak", "reasons_any": ["empty_password"] }
+    },
+    {
+      "id": "short_a",
+      "password": "a",
+      "tags": ["short"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "short_ab",
+      "password": "ab",
+      "tags": ["short"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "passphrase_xkcd",
+      "password": "correcthorsebatterystaple",
+      "tags": ["passphrase"],
+      "expect": { "min_keyspace_bits": 100 }
+    },
+    {
+      "id": "randomish_symbol",
+      "password": "xK9#mP2$vL7q",
+      "tags": ["strongish"],
+      "expect": { "min_keyspace_bits": 70 }
+    },
+    {
+      "id": "strong_passphrase_punct",
+      "password": "Correct-Horse-Battery-Staple-9!",
+      "tags": ["strongish"],
+      "expect": { "min_keyspace_bits": 120 }
+    },
+    {
+      "id": "no_model_charset_only",
+      "password": "abcdefghijklmnopqrstuvwxyz",
+      "tags": ["no-model"],
+      "mode": "offline_no_model",
+      "expect": { "label_null": true, "min_keyspace_bits": 100 }
+    },
+    {
+      "id": "zyxwvutsrqponmlkjihgfedcba",
+      "password": "zyxwvutsrqponmlkjihgfedcba",
+      "tags": ["sequential"],
+      "expect": { "max_label": "weak", "reasons_any": ["sequential_run"] }
+    },
+    {
+      "id": "1qaz2wsx",
+      "password": "1qaz2wsx",
+      "tags": ["keyboard"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "password123",
+      "password": "password123",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "iloveyou123",
+      "password": "iloveyou123",
+      "tags": ["phrase"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "dragon",
+      "password": "dragon",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "monkey",
+      "password": "monkey",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "asdfghjkl",
+      "password": "asdfghjkl",
+      "tags": ["keyboard"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "changeme1",
+      "password": "Changeme1",
+      "tags": ["common"],
+      "expect": { "max_label": "fair" }
+    },
+    {
+      "id": "company2024",
+      "password": "Company2024!",
+      "tags": ["corporate"],
+      "expect": { "max_label": "strong" }
+    },
+    {
+      "id": "trustno1",
+      "password": "trustno1",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "abc123",
+      "password": "abc123",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "partial_alphabet",
+      "password": "abcdefghijklmnop",
+      "tags": ["sequential"],
+      "expect": { "max_label": "weak", "reasons_any": ["sequential_run"] }
+    },
+    {
+      "id": "hello",
+      "password": "hello",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    },
+    {
+      "id": "football",
+      "password": "football",
+      "tags": ["common"],
+      "expect": { "max_label": "weak" }
+    }
+  ]
+}

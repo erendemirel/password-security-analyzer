@@ -1,0 +1,76 @@
+{
+  "description": "Offline HIBP e2e (PwnedPasswordsDownloader-compatible ranges in data/hibp/ranges)",
+  "source": "https://github.com/HaveIBeenPwned/PwnedPasswordsDownloader",
+  "cases": [
+    {
+      "id": "hibp_offline_password",
+      "password": "password",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ],
+        "breach_source": "hibp_offline"
+      }
+    },
+    {
+      "id": "hibp_offline_123456",
+      "password": "123456",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "hibp_offline_qwerty",
+      "password": "qwerty",
+      "tags": [
+        "hibp",
+        "offline"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    },
+    {
+      "id": "hibp_offline_iloveyou",
+      "password": "iloveyou",
+      "tags": [
+        "hibp",
+        "offline",
+        "edge-article"
+      ],
+      "mode": "offline_hibp",
+      "expect": {
+        "aborted": true,
+        "pwned": true,
+        "max_label": "weak",
+        "reasons_any": [
+          "pwned_password"
+        ]
+      }
+    }
+  ]
+}
