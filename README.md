@@ -4,7 +4,7 @@ Helps your app tell users whether a password looks easy to guess and whether it 
 
 It runs on the device or in your backend, you embed a library (or CLI). There is no PSA cloud service that receives the password.
 
-**Try it:** [Test it here](https://password-security-analyzer-test.netlify.app)
+**Try it:** [Test it here](https://password-security-analyzer-test.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/0bfb54c3-5db6-458a-9607-a86ab6e62dfc/deploy-status)](https://app.netlify.com/projects/password-security-analyzer-test/deploys)
 
 ## How it works
 
