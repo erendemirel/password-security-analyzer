@@ -125,5 +125,6 @@ There is **no** hand-curated list of bad phrases. Common leaked / natural-langua
 ### Limits
 
 - Not an authorization gate; keep server-side policy, rate limits, and proper password hashing.
+- Do **not** expose an unprotected backend scoring endpoint: analyze calls are CPU-heavy (and live HIBP adds outbound traffic), so flooding them is an easy DoS. Prefer client-side meters; if scoring on the server, rate-limit and cap input size. See the README **Security notice**.
 - Not calibrated to Hashcat/John guess order. [Leak evaluation](leak-eval.md) checks behavior on RockYou (label mix and correlation with leak frequency).
 - Passwords that appear in leaks but outside the known-index head rely on Markov alone and can be overrated compared to exact membership.

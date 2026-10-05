@@ -52,7 +52,9 @@ If the password is in a breach list, PSA stops early, sets `label` to `weak`, an
 
 Same engine for the CLI and every language binding.
 
-**`analyze` vs `analyze_offline`:** “Offline” means **no network** — score with the local model (and optional pattern / keyspace checks). It does **not** require a local HIBP database. Breach checking is separate: use `analyze` for the live HIBP API, or pass a local store (`--hibp-offline` / `hibp_offline_path`) if you want breach checks without the network. The language samples below use `analyze_offline` for a simple no-network demo.
+> [!CAUTION]
+> See [Security notice (server-side use)](#security-notice-server-side-use) first
+
 
 **CLI**
 
@@ -115,12 +117,23 @@ puts PasswordSecurityAnalyzer.analyze_offline("password")["label"]
 std::cout << psa::analyze_offline("password") << "\n";
 ```
 
+> [!TIP]
+> **`analyze` vs `analyze_offline`:** “Offline” means **no network** — score with the local model (and optional pattern / keyspace checks). It does **not** require a local HIBP database. Breach checking is separate: use `analyze` for the live HIBP API, or pass a local store (`--hibp-offline` / `hibp_offline_path`) if you want breach checks without the network. The language samples below use `analyze_offline` for a simple no-network demo
+
 Packages and how to build the native library: [docs/bindings.md](docs/bindings.md). Browser/WASM: [`packages/psa-js`](packages/psa-js).
+
+## Security notice (server-side use)
+
+Scoring is **CPU-heavy**. If you expose this from a backend without protection, an attacker can flood you with analyze requests and burn CPU, memory, or HIBP quota — a straightforward **denial-of-service** risk.
+
+- Prefer running the meter **in the client** (WASM / native app) for UX; keep auth policy on the server.
+- If you must call PSA on the server: **rate-limit** by IP and by account, set **timeouts**, cap **password length**, and do **not** offer an open, unauthenticated “score any string” API to the internet.
+- Still enforce your own signup/login rules; PSA remains advisory only.
 
 ## Privacy
 
 - Password analysis is local to your process.
-- Online HIBP uses [k-anonymity](https://haveibeenpwned.com/API/v3#PwnedPasswords): the full password never leaves your app for that check. HIBP API uses first few characters of the SHA, not the password itself
+- Online HIBP uses [k-anonymity](https://haveibeenpwned.com/API/v3#PwnedPasswords): the full password never leaves your app for that check. HIBP API uses first few characters of the SHA, not the password itself.
 - Prefer checking on blur/submit, not on every keystroke.
 
 ## When not to rely on it alone
