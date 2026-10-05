@@ -60,7 +60,7 @@
       "password": "dj38sS",
       "expect": {
         "aborted": false,
-        "label": "weak",
+        "label": "fair",
         "reasons_contains": ["capped_by_keyspace"]
       }
     }
