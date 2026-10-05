@@ -31,6 +31,8 @@ password
 
 Practical notes: free, no API key; always send a descriptive `User-Agent`; HIBP padding is enabled; prefer checking on blur/submit, not every keystroke. Downloading an offline store: [training.md](training.md).
 
+API naming: `analyze_offline` / `analyze-offline` means **no network**, not “must use a local HIBP DB.” Without `hibp_offline_path` / `--hibp-offline`, breach checking is skipped and only local scoring runs. `analyze` uses the live HIBP range API. A local store is optional when you want breach checks offline.
+
 This matches common guidance such as [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html) (check passwords against breached/known-bad lists; do not rely on composition rules alone) and the [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html).
 
 ### Keyspace bits

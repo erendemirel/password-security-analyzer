@@ -27,4 +27,4 @@ Then use the package for your language (each folder has a short README):
 
 If the loader cannot find the native library, set `PSA_FFI_PATH` to the `.dll` / `.so` / `.dylib`.
 
-Call samples: [Usage in the root README](../README.md#usage-in-your-language).
+Call samples: [Usage in the root README](../README.md#usage). There, `analyze_offline` means **no network** (local scoring); it is not the same as “local HIBP database.” Use `analyze` for live HIBP, or pass `hibp_offline_path` for an offline breach store.

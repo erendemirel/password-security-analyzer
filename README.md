@@ -50,12 +50,15 @@ If the password is in a breach list, PSA stops early, sets `label` to `weak`, an
 
 Same engine for the CLI and every language binding.
 
+**`analyze` vs `analyze_offline`:** “Offline” means **no network** — score with the local model (and optional pattern / keyspace checks). It does **not** require a local HIBP database. Breach checking is separate: use `analyze` for the live HIBP API, or pass a local store (`--hibp-offline` / `hibp_offline_path`) if you want breach checks without the network. The language samples below use `analyze_offline` for a simple no-network demo.
+
 **CLI**
 
 ```bash
 cargo build -p psa-cli --release
-./target/release/psa analyze-offline 'correcthorsebatterystaple'
-./target/release/psa analyze 'password'   # also checks HIBP online
+./target/release/psa analyze-offline 'correcthorsebatterystaple'   # no network; no HIBP unless --hibp-offline
+./target/release/psa analyze 'password'                            # live HIBP + scoring
+./target/release/psa analyze-offline 'password' --hibp-offline data/hibp/ranges   # local HIBP store
 ```
 
 On Windows without MSVC: `cargo +stable-x86_64-pc-windows-gnu build -p psa-cli --release`. More build options: [docs/install.md](docs/install.md).
