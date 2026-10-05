@@ -27,6 +27,7 @@ CORPUS_SECLISTS = Path(__file__).resolve().parent / "corpus_seclists.json"
 CORPUS_HIBP = Path(__file__).resolve().parent / "corpus_hibp.json"
 CORPUS_TRICKY = Path(__file__).resolve().parent / "corpus_tricky.json"
 CORPUS_KEYSPACE = Path(__file__).resolve().parent / "corpus_keyspace.json"
+CORPUS_STRUCTURE = Path(__file__).resolve().parent / "corpus_structure.json"
 HIBP_OFFLINE = ROOT / "data" / "hibp" / "ranges"
 
 LABEL_RANK = {
@@ -251,6 +252,7 @@ def main() -> int:
         CORPUS_HIBP,
         CORPUS_TRICKY,
         CORPUS_KEYSPACE,
+        CORPUS_STRUCTURE,
     ]
     cases, refs = load_cases(corpus_paths)
     if not cases:

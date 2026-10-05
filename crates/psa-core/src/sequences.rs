@@ -205,6 +205,131 @@ pub fn unique_char_ratio(password: &str) -> f64 {
     uniq.len() as f64 / n as f64
 }
 
+/// QWERTY adjacency (letters + digits + common shifted digits), case-insensitive letters.
+fn keyboard_neighbors() -> &'static [(char, &'static [char])] {
+    &[
+        ('1', &['2', 'q', '!']),
+        ('2', &['1', '3', 'q', 'w', '@']),
+        ('3', &['2', '4', 'w', 'e', '#']),
+        ('4', &['3', '5', 'e', 'r', '$']),
+        ('5', &['4', '6', 'r', 't', '%']),
+        ('6', &['5', '7', 't', 'y', '^']),
+        ('7', &['6', '8', 'y', 'u', '&']),
+        ('8', &['7', '9', 'u', 'i', '*']),
+        ('9', &['8', '0', 'i', 'o', '(']),
+        ('0', &['9', 'o', 'p', ')']),
+        ('q', &['1', '2', 'w', 'a']),
+        ('w', &['2', '3', 'q', 'e', 'a', 's']),
+        ('e', &['3', '4', 'w', 'r', 's', 'd']),
+        ('r', &['4', '5', 'e', 't', 'd', 'f']),
+        ('t', &['5', '6', 'r', 'y', 'f', 'g']),
+        ('y', &['6', '7', 't', 'u', 'g', 'h']),
+        ('u', &['7', '8', 'y', 'i', 'h', 'j']),
+        ('i', &['8', '9', 'u', 'o', 'j', 'k']),
+        ('o', &['9', '0', 'i', 'p', 'k', 'l']),
+        ('p', &['0', 'o', 'l']),
+        ('a', &['q', 'w', 's', 'z']),
+        ('s', &['w', 'e', 'a', 'd', 'z', 'x']),
+        ('d', &['e', 'r', 's', 'f', 'x', 'c']),
+        ('f', &['r', 't', 'd', 'g', 'c', 'v']),
+        ('g', &['t', 'y', 'f', 'h', 'v', 'b']),
+        ('h', &['y', 'u', 'g', 'j', 'b', 'n']),
+        ('j', &['u', 'i', 'h', 'k', 'n', 'm']),
+        ('k', &['i', 'o', 'j', 'l', 'm']),
+        ('l', &['o', 'p', 'k']),
+        ('z', &['a', 's', 'x']),
+        ('x', &['s', 'd', 'z', 'c']),
+        ('c', &['d', 'f', 'x', 'v']),
+        ('v', &['f', 'g', 'c', 'b']),
+        ('b', &['g', 'h', 'v', 'n']),
+        ('n', &['h', 'j', 'b', 'm']),
+        ('m', &['j', 'k', 'n']),
+        ('!', &['1', '2', '@']),
+        ('@', &['2', '!', '#']),
+        ('#', &['3', '@', '$']),
+        ('$', &['4', '#', '%']),
+        ('%', &['5', '$', '^']),
+        ('^', &['6', '%', '&']),
+        ('&', &['7', '^', '*']),
+        ('*', &['8', '&', '(']),
+        ('(', &['9', '*', ')']),
+        (')', &['0', '(']),
+    ]
+}
+
+fn norm_key(c: char) -> char {
+    if c.is_ascii_alphabetic() {
+        c.to_ascii_lowercase()
+    } else {
+        c
+    }
+}
+
+fn keys_adjacent(a: char, b: char) -> bool {
+    let a = norm_key(a);
+    let b = norm_key(b);
+    if a == b {
+        return true;
+    }
+    for (k, neigh) in keyboard_neighbors() {
+        if *k == a && neigh.contains(&b) {
+            return true;
+        }
+    }
+    false
+}
+
+/// Longest run of QWERTY-adjacent keys (spatial walk / zigzag).
+pub fn longest_keyboard_walk(password: &str) -> usize {
+    let chars: Vec<char> = password.chars().collect();
+    if chars.len() < 2 {
+        return chars.len();
+    }
+    let mut best = 1usize;
+    let mut cur = 1usize;
+    for w in chars.windows(2) {
+        if keys_adjacent(w[0], w[1]) {
+            cur += 1;
+            best = best.max(cur);
+        } else {
+            cur = 1;
+        }
+    }
+    best
+}
+
+/// Fraction of consecutive pairs that are QWERTY-adjacent (0..=1).
+pub fn keyboard_adjacency_ratio(password: &str) -> f64 {
+    let chars: Vec<char> = password.chars().collect();
+    if chars.len() < 2 {
+        return 0.0;
+    }
+    let mut ok = 0usize;
+    let mut total = 0usize;
+    for w in chars.windows(2) {
+        total += 1;
+        if keys_adjacent(w[0], w[1]) {
+            ok += 1;
+        }
+    }
+    ok as f64 / total as f64
+}
+
+/// True when most of the password is a keyboard walk (safe demotion).
+pub fn has_keyboard_walk(password: &str) -> bool {
+    let n = password.chars().count();
+    if n < 5 {
+        return false;
+    }
+    let walk = longest_keyboard_walk(password);
+    let ratio = keyboard_adjacency_ratio(password);
+    // Whole-password walk, long contiguous walk, or high adjacency
+    // (covers concatenated columns like `1qaz2wsx` where z→2 breaks the run).
+    walk >= n
+        || (walk >= 6 && walk * 5 >= n * 4)
+        || (n >= 6 && ratio >= 0.8)
+}
+
 /// Reasons that should demote strength (empty if none).
 pub fn sequence_demotion_reasons(password: &str) -> Vec<&'static str> {
     let mut reasons = Vec::new();
@@ -240,6 +365,9 @@ pub fn sequence_demotion_reasons(password: &str) -> Vec<&'static str> {
     if has_tiled_fragment(password) {
         reasons.push("tiled_fragment");
     }
+    if has_keyboard_walk(password) {
+        reasons.push("keyboard_walk");
+    }
     // Low variety on longer passwords (demote-only)
     if n >= 12 && unique_char_ratio(password) <= 0.25 {
         reasons.push("low_variety");
@@ -271,6 +399,22 @@ mod tests {
         let (l, r) = apply_sequence_demotion(StrengthLabel::VeryStrong, "abcdefghijklmnopqrstuvwxyz");
         assert_eq!(l, StrengthLabel::Weak);
         assert!(r.contains(&"sequential_run"));
+    }
+
+    #[test]
+    fn keyboard_walks() {
+        assert!(has_keyboard_walk("qwerty"));
+        assert!(has_keyboard_walk("asdfgh"));
+        assert!(has_keyboard_walk("1qaz2wsx"));
+        assert!(has_keyboard_walk("qwerasdf"));
+        assert!(has_keyboard_walk("zaq1xsw2"));
+        assert!(longest_keyboard_walk("qwerty") >= 6);
+        let (l, r) = apply_sequence_demotion(StrengthLabel::VeryStrong, "wertyuis");
+        assert_eq!(l, StrengthLabel::Weak);
+        assert!(r.contains(&"keyboard_walk"));
+        // Normal word / passphrase should not trip spatial walk
+        assert!(!has_keyboard_walk("password"));
+        assert!(!has_keyboard_walk("correcthorsebatterystaple"));
     }
 
     #[test]

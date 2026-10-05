@@ -31,10 +31,13 @@
 | `e2e/corpus_seclists.json` | Sampled from [SecLists Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords) via `scripts/download_seclists.py` |
 | `e2e/corpus_hibp.json` | Offline HIBP pwned aborts; needs `data/hibp/ranges` from `scripts/download_hibp.py` |
 | `e2e/corpus_keyspace.json` | Short “random-looking” Markov overrate / keyspace-cap guards |
+| `e2e/corpus_structure.json` | Dates, phones, base64, keyboard-walk demotion |
 
 ## Corpus notes
 
 Includes cases from the [Microsoft Edge Markov password estimator article](https://microsoftedge.github.io/edgevr/posts/Using-Markov-model-for-password-complexity-estimation-in-microsoft-edge/), SecLists samples, and offline [PwnedPasswordsDownloader](https://github.com/HaveIBeenPwned/PwnedPasswordsDownloader)-compatible HIBP checks.
+
+Every scored case also enforces `strength_bits ≤ keyspace_bits`. Remaining gaps: mid-list leaks outside `known.bin` (see [leak-eval.md](../docs/leak-eval.md)); full e2e/HIBP not in CI; keyboard walks assume QWERTY.
 
 ## Leak evaluation (ops / research)
 

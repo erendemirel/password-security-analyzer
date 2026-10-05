@@ -1,0 +1,112 @@
+{
+  "description": "Structured / spatial demotion: dates, phones, base64, keyboard walks (safe bias to weak).",
+  "cases": [
+    {
+      "id": "struct_date_ymd",
+      "password": "20190315",
+      "tags": ["structure", "date"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_date"]
+      }
+    },
+    {
+      "id": "struct_date_iso",
+      "password": "2019-03-15",
+      "tags": ["structure", "date"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_date"]
+      }
+    },
+    {
+      "id": "struct_phone_plain",
+      "password": "5551234567",
+      "tags": ["structure", "phone"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_phone"]
+      }
+    },
+    {
+      "id": "struct_phone_punct",
+      "password": "(555)1234567",
+      "tags": ["structure", "phone"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_phone"]
+      }
+    },
+    {
+      "id": "struct_phone_dashed",
+      "password": "555-123-4567",
+      "tags": ["structure", "phone"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_phone"]
+      }
+    },
+    {
+      "id": "struct_base64_padded",
+      "password": "SGVsbG8gV29ybGQ=",
+      "tags": ["structure", "base64"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_base64"]
+      }
+    },
+    {
+      "id": "struct_base64_alnum",
+      "password": "dGVzdHRlc3R0ZXN0",
+      "tags": ["structure", "base64"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["structured_base64"]
+      }
+    },
+    {
+      "id": "kb_walk_partial_row",
+      "password": "wertyuis",
+      "tags": ["keyboard", "walk"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["keyboard_walk"]
+      }
+    },
+    {
+      "id": "kb_walk_columns",
+      "password": "1qaz2wsx",
+      "tags": ["keyboard", "walk"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["keyboard_walk", "known_from_training"]
+      }
+    },
+    {
+      "id": "kb_walk_mixed_rows",
+      "password": "qwerasdf",
+      "tags": ["keyboard", "walk"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["keyboard_walk", "known_from_training"]
+      }
+    },
+    {
+      "id": "kb_walk_obscure_row",
+      "password": "ujmikl",
+      "tags": ["keyboard", "walk"],
+      "expect": {
+        "max_label": "weak",
+        "reasons_any": ["keyboard_walk"]
+      }
+    },
+    {
+      "id": "struct_novel_not_demoted",
+      "password": "kR7!mQx#9vLp$2nW",
+      "tags": ["structure", "strongish"],
+      "expect": {
+        "min_label": "strong"
+      }
+    }
+  ]
+}

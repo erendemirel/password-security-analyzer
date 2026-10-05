@@ -117,9 +117,10 @@ Some strings look unlikely character-by-character (so Markov overrates them) but
 | `sequential_run` | `abcd…`, `987654` |
 | `constant_gap` | `acegik…` |
 | `tiled_fragment` | `abcabcabc` |
+| `keyboard_walk` | `qwerty`, `1qaz2wsx`, partial row/column walks |
 | `class_run` / `low_variety` | long digit blocks; long low-diversity strings |
 | `whitespace_only` | spaces-only passwords |
-| `structured_*` | UUID, MAC, IPv4, hex digests (32 / 40 / 64 hex) |
+| `structured_*` | UUID, MAC, IPv4, hex digests, dates, phone numbers, base64 |
 
 There is **no** hand-curated list of bad phrases. Common leaked / natural-language passwords are meant to be caught by **training data**. Coverage scales with the wordlist you train on.
 

@@ -76,9 +76,9 @@
       "password": "20190315",
       "tags": ["keyspace", "date_like"],
       "expect": {
-        "max_label": "fair",
-        "strength_bits_le_keyspace": true,
-        "max_strength_bits": 28
+        "max_label": "weak",
+        "reasons_any": ["structured_date"],
+        "strength_bits_le_keyspace": true
       }
     },
     {

@@ -1,8 +1,8 @@
 //! Structured-constant detectors (safe demotion only).
 //!
 //! Catches whole-password shapes that look high-entropy to Markov but are
-//! public identifiers: UUIDs, MAC addresses, IPv4, hex hash digests.
-//! Also demotes whitespace-only strings (appear in leaks; Markov overrates).
+//! public identifiers or encoded constants: UUIDs, MAC, IPv4, hex digests,
+//! dates, phone numbers, base64. Also demotes whitespace-only strings.
 
 /// Demotion reasons for structured constants (empty if none).
 pub fn structure_demotion_reasons(password: &str) -> Vec<&'static str> {
@@ -21,6 +21,15 @@ pub fn structure_demotion_reasons(password: &str) -> Vec<&'static str> {
     }
     if looks_like_hex_digest(password) {
         reasons.push("structured_hex");
+    }
+    if looks_like_date(password) {
+        reasons.push("structured_date");
+    }
+    if looks_like_phone(password) {
+        reasons.push("structured_phone");
+    }
+    if looks_like_base64(password) {
+        reasons.push("structured_base64");
     }
     reasons
 }
@@ -44,7 +53,6 @@ fn looks_like_whitespace_only(password: &str) -> bool {
 
 fn looks_like_uuid(password: &str) -> bool {
     let s = password.trim();
-    // 8-4-4-4-12 with hyphens
     if s.len() == 36 {
         let b = s.as_bytes();
         if b[8] == b'-' && b[13] == b'-' && b[18] == b'-' && b[23] == b'-' {
@@ -53,18 +61,11 @@ fn looks_like_uuid(password: &str) -> bool {
             });
         }
     }
-    // 32 hex (UUID without hyphens) — only if not already counted as digest;
-    // treated as uuid-shaped when we want the uuid reason specifically.
-    if s.len() == 32 && s.chars().all(|c| c.is_ascii_hexdigit()) {
-        // Prefer structured_hex for plain digests; UUID-without-hyphens is still a digest.
-        return false;
-    }
     false
 }
 
 fn looks_like_mac(password: &str) -> bool {
     let s = password.trim();
-    // AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF
     if s.len() != 17 {
         return false;
     }
@@ -76,7 +77,9 @@ fn looks_like_mac(password: &str) -> bool {
     if parts.len() != 6 {
         return false;
     }
-    parts.iter().all(|p| p.len() == 2 && p.chars().all(|c| c.is_ascii_hexdigit()))
+    parts
+        .iter()
+        .all(|p| p.len() == 2 && p.chars().all(|c| c.is_ascii_hexdigit()))
 }
 
 fn looks_like_ipv4(password: &str) -> bool {
@@ -89,7 +92,6 @@ fn looks_like_ipv4(password: &str) -> bool {
         if p.is_empty() || p.len() > 3 || !p.chars().all(|c| c.is_ascii_digit()) {
             return false;
         }
-        // no leading zero unless the octet is exactly "0"
         if p.len() > 1 && p.starts_with('0') {
             return false;
         }
@@ -99,8 +101,122 @@ fn looks_like_ipv4(password: &str) -> bool {
 
 fn looks_like_hex_digest(password: &str) -> bool {
     let s = password.trim();
-    // MD5=32, SHA-1=40, SHA-256=64 — whole password hex only
     matches!(s.len(), 32 | 40 | 64) && s.chars().all(|c| c.is_ascii_hexdigit())
+}
+
+fn plausible_ymd(y: u32, m: u32, d: u32) -> bool {
+    if !(1900..=2100).contains(&y) || !(1..=12).contains(&m) || !(1..=31).contains(&d) {
+        return false;
+    }
+    let max_d = match m {
+        1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
+        4 | 6 | 9 | 11 => 30,
+        2 => {
+            let leap = (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
+            if leap {
+                29
+            } else {
+                28
+            }
+        }
+        _ => return false,
+    };
+    d <= max_d
+}
+
+/// Whole-password calendar dates (common leak / form formats).
+fn looks_like_date(password: &str) -> bool {
+    let s = password.trim();
+    // YYYYMMDD
+    if s.len() == 8 && s.chars().all(|c| c.is_ascii_digit()) {
+        let y: u32 = s[0..4].parse().unwrap_or(0);
+        let m: u32 = s[4..6].parse().unwrap_or(0);
+        let d: u32 = s[6..8].parse().unwrap_or(0);
+        return plausible_ymd(y, m, d);
+    }
+    // YYYY-MM-DD or YYYY/MM/DD
+    if s.len() == 10 {
+        let b = s.as_bytes();
+        let sep = b[4];
+        if (sep == b'-' || sep == b'/') && b[7] == sep {
+            let y: u32 = s[0..4].parse().unwrap_or(0);
+            let m: u32 = s[5..7].parse().unwrap_or(0);
+            let d: u32 = s[8..10].parse().unwrap_or(0);
+            if plausible_ymd(y, m, d) {
+                return true;
+            }
+        }
+        // MM-DD-YYYY or DD-MM-YYYY (or /)
+        let sep = b[2];
+        if (sep == b'-' || sep == b'/') && b[5] == sep {
+            let a: u32 = s[0..2].parse().unwrap_or(0);
+            let c: u32 = s[3..5].parse().unwrap_or(0);
+            let y: u32 = s[6..10].parse().unwrap_or(0);
+            // Accept either MDY or DMY when both plausible, or uniquely one.
+            if plausible_ymd(y, a, c) || plausible_ymd(y, c, a) {
+                return true;
+            }
+        }
+    }
+    false
+}
+
+/// US-style phone numbers (10 digits, optional leading country 1).
+fn looks_like_phone(password: &str) -> bool {
+    let s = password.trim();
+    if s.is_empty() {
+        return false;
+    }
+    // Must look phone-shaped: mostly digits with optional phone punctuation.
+    if !s.chars().all(|c| {
+        c.is_ascii_digit()
+            || matches!(c, '+' | '-' | '(' | ')' | '.' | ' ')
+    }) {
+        return false;
+    }
+    let digits: String = s.chars().filter(|c| c.is_ascii_digit()).collect();
+    let d = digits.as_str();
+    // +1 / leading 1 then 10 digits, or plain 10 digits
+    let national = if d.len() == 11 && d.starts_with('1') {
+        &d[1..]
+    } else if d.len() == 10 {
+        d
+    } else {
+        return false;
+    };
+    // Area code should not start with 0 (keeps obvious non-phones out).
+    // Exchange may start with 1 — fictional 555-123-4567 is a common password shape.
+    if national.as_bytes()[0] < b'2' {
+        return false;
+    }
+    let _ = national;
+    true
+}
+
+/// Whole-password base64 (ASCII). Conservative to limit false positives on passphrases.
+fn looks_like_base64(password: &str) -> bool {
+    let s = password.trim();
+    if s.len() < 12 || s.len() % 4 != 0 {
+        return false;
+    }
+    if !s
+        .chars()
+        .all(|c| c.is_ascii_alphanumeric() || c == '+' || c == '/' || c == '=')
+    {
+        return false;
+    }
+    let stripped = s.trim_end_matches('=');
+    if stripped.chars().any(|c| c == '=') {
+        return false;
+    }
+    let pad = s.len() - stripped.len();
+    if pad > 2 {
+        return false;
+    }
+    let has_special = s.contains('+') || s.contains('/') || pad > 0;
+    let alnum_only = stripped.chars().all(|c| c.is_ascii_alphanumeric());
+    // Padded / +/ forms from length 12; pure alnum blocks from 16 (e.g. dGVzdHRlc3R0ZXN0).
+    has_special || (alnum_only && s.len() >= 16)
 }
 
 #[cfg(test)]
@@ -149,6 +265,41 @@ mod tests {
             "a7f3c91e0b2d4468e1a9c0ffa7f3c91e0b2d4468e1a9c0ffa7f3c91e0b2d4468"
         ));
         assert!(!looks_like_hex_digest("kR7!mQx#9vLp$2nW"));
+    }
+
+    #[test]
+    fn dates() {
+        assert!(looks_like_date("20190315"));
+        assert!(looks_like_date("2019-03-15"));
+        assert!(looks_like_date("03/15/2019"));
+        assert!(looks_like_date("15-03-2019"));
+        assert!(!looks_like_date("20191345"));
+        assert!(!looks_like_date("password"));
+        let (_, r) = apply_structure_demotion(StrengthLabel::Strong, "20190315");
+        assert!(r.contains(&"structured_date"));
+    }
+
+    #[test]
+    fn phones() {
+        assert!(looks_like_phone("5551234567"));
+        assert!(looks_like_phone("555-123-4567"));
+        assert!(looks_like_phone("(555)1234567"));
+        assert!(looks_like_phone("+1 555 123 4567"));
+        assert!(!looks_like_phone("0123456789")); // area can't start 0
+        assert!(!looks_like_phone("kR7!mQx#9vLp$2nW"));
+        let (_, r) = apply_structure_demotion(StrengthLabel::VeryStrong, "(555)1234567");
+        assert!(r.contains(&"structured_phone"));
+    }
+
+    #[test]
+    fn base64_shaped() {
+        assert!(looks_like_base64("SGVsbG8gV29ybGQ="));
+        assert!(looks_like_base64("YWJjZGVmZ2hpams="));
+        assert!(looks_like_base64("dGVzdHRlc3R0ZXN0")); // 16 lower, %4
+        assert!(!looks_like_base64("correcthorsebatterystaple"));
+        assert!(!looks_like_base64("short"));
+        let (_, r) = apply_structure_demotion(StrengthLabel::VeryStrong, "SGVsbG8gV29ybGQ=");
+        assert!(r.contains(&"structured_base64"));
     }
 
     #[test]
