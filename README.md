@@ -175,8 +175,6 @@ PSA is checked at a few layers (not a formal certification):
 
 1. **CLI end-to-end** — `e2e/run_e2e.py` runs the release `psa` binary on curated corpora (common passwords, SecLists samples, tricky patterns, offline HIBP aborts) and compares against a locked baseline so labels do not get unsafely stronger. See [e2e/README.md](e2e/README.md).
 2. **Leak / research eval** — `scripts/eval_leak.py` scores RockYou (and controls) offline to check label mix and how `guess_number` tracks leak frequency; optional zxcvbn comparison. See [docs/leak-eval.md](docs/leak-eval.md).
-3. **Language bindings** — each wrapper is smoke-tested against the same `psa-ffi` library (`analyze_offline("password")` → weak, plus a few pattern cases). Commands: [docs/bindings.md](docs/bindings.md).
-4. **Interactive demo** — the [Netlify WASM demo](https://password-security-analyzer-test.netlify.app) exercises the browser build.
 
 The full e2e/leak suites are local (they need wordlists / HIBP data).
 
