@@ -56,9 +56,10 @@ fn looks_like_uuid(password: &str) -> bool {
     if s.len() == 36 {
         let b = s.as_bytes();
         if b[8] == b'-' && b[13] == b'-' && b[18] == b'-' && b[23] == b'-' {
-            return s.chars().enumerate().all(|(i, c)| {
-                matches!(i, 8 | 13 | 18 | 23) || c.is_ascii_hexdigit()
-            });
+            return s
+                .chars()
+                .enumerate()
+                .all(|(i, c)| matches!(i, 8 | 13 | 18 | 23) || c.is_ascii_hexdigit());
         }
     }
     false
@@ -168,10 +169,10 @@ fn looks_like_phone(password: &str) -> bool {
         return false;
     }
     // Must look phone-shaped: mostly digits with optional phone punctuation.
-    if !s.chars().all(|c| {
-        c.is_ascii_digit()
-            || matches!(c, '+' | '-' | '(' | ')' | '.' | ' ')
-    }) {
+    if !s
+        .chars()
+        .all(|c| c.is_ascii_digit() || matches!(c, '+' | '-' | '(' | ')' | '.' | ' '))
+    {
         return false;
     }
     let digits: String = s.chars().filter(|c| c.is_ascii_digit()).collect();
@@ -193,7 +194,13 @@ fn looks_like_phone(password: &str) -> bool {
     true
 }
 
-/// Whole-password base64 (ASCII). Conservative to limit false positives on passphrases.
+/// Whole-password base64 (ASCII).
+///
+/// `+`, `/`, and `=` are outside a normal password alphabet, so those forms are
+/// demoted from length 12. A pure alphanumeric block is also a legal password,
+/// so it is demoted only when it decodes to printable text (encoded constants
+/// such as `dGVzdHRlc3R0ZXN0` → `testtesttest`). Random alnum strings decode to
+/// binary and are left alone.
 fn looks_like_base64(password: &str) -> bool {
     let s = password.trim();
     if s.len() < 12 || s.len() % 4 != 0 {
@@ -214,9 +221,52 @@ fn looks_like_base64(password: &str) -> bool {
         return false;
     }
     let has_special = s.contains('+') || s.contains('/') || pad > 0;
-    let alnum_only = stripped.chars().all(|c| c.is_ascii_alphanumeric());
-    // Padded / +/ forms from length 12; pure alnum blocks from 16 (e.g. dGVzdHRlc3R0ZXN0).
-    has_special || (alnum_only && s.len() >= 16)
+    if has_special {
+        return true;
+    }
+    // Pure alnum: length 16+ and a printable payload, not merely a legal alphabet.
+    s.len() >= 16 && decoded_base64_is_text(stripped)
+}
+
+fn base64_value(c: u8) -> Option<u8> {
+    match c {
+        b'A'..=b'Z' => Some(c - b'A'),
+        b'a'..=b'z' => Some(c - b'a' + 26),
+        b'0'..=b'9' => Some(c - b'0' + 52),
+        b'+' => Some(62),
+        b'/' => Some(63),
+        _ => None,
+    }
+}
+
+/// Standard base64 of `s` (no padding) is entirely printable ASCII or common whitespace.
+fn decoded_base64_is_text(s: &str) -> bool {
+    let bytes = s.as_bytes();
+    if bytes.is_empty() || bytes.len() % 4 != 0 {
+        return false;
+    }
+    let mut out = Vec::with_capacity(bytes.len() / 4 * 3);
+    for chunk in bytes.chunks_exact(4) {
+        let Some(a) = base64_value(chunk[0]) else {
+            return false;
+        };
+        let Some(b) = base64_value(chunk[1]) else {
+            return false;
+        };
+        let Some(c) = base64_value(chunk[2]) else {
+            return false;
+        };
+        let Some(d) = base64_value(chunk[3]) else {
+            return false;
+        };
+        out.push((a << 2) | (b >> 4));
+        out.push((b << 4) | (c >> 2));
+        out.push((c << 6) | d);
+    }
+    !out.is_empty()
+        && out
+            .iter()
+            .all(|b| matches!(b, b'\t' | b'\n' | b'\r' | 0x20..=0x7e))
 }
 
 #[cfg(test)]
@@ -295,11 +345,16 @@ mod tests {
     fn base64_shaped() {
         assert!(looks_like_base64("SGVsbG8gV29ybGQ="));
         assert!(looks_like_base64("YWJjZGVmZ2hpams="));
-        assert!(looks_like_base64("dGVzdHRlc3R0ZXN0")); // 16 lower, %4
+        assert!(looks_like_base64("dGVzdHRlc3R0ZXN0")); // base64("testtesttest")
         assert!(!looks_like_base64("correcthorsebatterystaple"));
         assert!(!looks_like_base64("short"));
+        // Mixed-case alnum of a legal base64 length is not an encoded constant.
+        assert!(!looks_like_base64("Mb2nPq9xLf4vRk7w"));
+        assert!(!looks_like_base64("Mb2nPq9xLf4vRk7wXyZa"));
         let (_, r) = apply_structure_demotion(StrengthLabel::VeryStrong, "SGVsbG8gV29ybGQ=");
         assert!(r.contains(&"structured_base64"));
+        let (_, random) = apply_structure_demotion(StrengthLabel::VeryStrong, "Mb2nPq9xLf4vRk7w");
+        assert!(random.is_empty());
     }
 
     #[test]

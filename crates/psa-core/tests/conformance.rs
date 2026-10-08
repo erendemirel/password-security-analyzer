@@ -1,8 +1,8 @@
 //! Conformance runner for golden JSON vectors.
 
-use psa_core::keyspace::keyspace_bits;
-use psa_core::hibp::{hash_prefix_suffix, match_range_body};
 use psa_core::analyze_offline;
+use psa_core::hibp::{hash_prefix_suffix, match_range_body};
+use psa_core::keyspace::keyspace_bits;
 use serde::Deserialize;
 use serde_json::Value;
 use std::fs;
@@ -87,11 +87,7 @@ fn conformance_offline_scoring() {
             );
         }
         if let Some(min_b) = case.expect.min_keyspace_bits {
-            assert!(
-                r.keyspace_bits + 1e-9 >= min_b,
-                "{} min keyspace",
-                case.id
-            );
+            assert!(r.keyspace_bits + 1e-9 >= min_b, "{} min keyspace", case.id);
         }
         let _ = keyspace_bits(&case.password);
     }

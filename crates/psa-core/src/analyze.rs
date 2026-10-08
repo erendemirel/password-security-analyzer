@@ -3,8 +3,8 @@
 use std::path::Path;
 use std::sync::OnceLock;
 
-use crate::keyspace::keyspace_bits;
 use crate::hibp::{self, HibpError, HttpGet};
+use crate::keyspace::keyspace_bits;
 use crate::known::{KnownError, KnownPasswords};
 use crate::model::{MarkovModel, ModelError};
 use crate::monte_carlo::{McError, MonteCarloCurve};
@@ -288,14 +288,8 @@ pub fn analyze(
 /// HTTP client that always fails — only used when breach is skipped.
 struct NullHttp;
 impl HttpGet for NullHttp {
-    fn get_text(
-        &self,
-        _url: &str,
-        _headers: &[(&str, &str)],
-    ) -> Result<String, HibpError> {
-        Err(HibpError::Http(
-            "NullHttp: breach check skipped".into(),
-        ))
+    fn get_text(&self, _url: &str, _headers: &[(&str, &str)]) -> Result<String, HibpError> {
+        Err(HibpError::Http("NullHttp: breach check skipped".into()))
     }
 }
 
@@ -306,11 +300,7 @@ mod tests {
 
     struct MockHttp;
     impl HttpGet for MockHttp {
-        fn get_text(
-            &self,
-            _url: &str,
-            _headers: &[(&str, &str)],
-        ) -> Result<String, HibpError> {
+        fn get_text(&self, _url: &str, _headers: &[(&str, &str)]) -> Result<String, HibpError> {
             Ok(String::new())
         }
     }

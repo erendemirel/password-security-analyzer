@@ -91,10 +91,11 @@ impl MonteCarloCurve {
         if nlp <= self.neg_log2_p[0] {
             return self.ranks.first().copied().unwrap_or(1.0).max(1.0);
         }
-        self.ranks.get(j).copied().unwrap_or_else(|| {
-            self.ranks.last().copied().unwrap_or(1.0 / probability)
-        })
-        .max(1.0)
+        self.ranks
+            .get(j)
+            .copied()
+            .unwrap_or_else(|| self.ranks.last().copied().unwrap_or(1.0 / probability))
+            .max(1.0)
     }
 
     pub fn save_to_path(&self, path: impl AsRef<Path>) -> Result<(), McError> {
@@ -160,8 +161,21 @@ mod tests {
     #[test]
     fn curve_monotonic_guesses() {
         let pws = [
-            "password", "password1", "password123", "admin", "admin1", "welcome", "qwerty",
-            "letmein", "abc123", "monkey", "dragon", "master", "login", "princess", "solo",
+            "password",
+            "password1",
+            "password123",
+            "admin",
+            "admin1",
+            "welcome",
+            "qwerty",
+            "letmein",
+            "abc123",
+            "monkey",
+            "dragon",
+            "master",
+            "login",
+            "princess",
+            "solo",
         ];
         let m = MarkovModel::train_from_passwords(pws, 0.01);
         let mut s = 0x1234_5678_9abc_defu64;

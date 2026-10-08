@@ -325,9 +325,7 @@ pub fn has_keyboard_walk(password: &str) -> bool {
     let ratio = keyboard_adjacency_ratio(password);
     // Whole-password walk, long contiguous walk, or high adjacency
     // (covers concatenated columns like `1qaz2wsx` where z→2 breaks the run).
-    walk >= n
-        || (walk >= 6 && walk * 5 >= n * 4)
-        || (n >= 6 && ratio >= 0.8)
+    walk >= n || (walk >= 6 && walk * 5 >= n * 4) || (n >= 6 && ratio >= 0.8)
 }
 
 /// Reasons that should demote strength (empty if none).
@@ -355,9 +353,7 @@ pub fn sequence_demotion_reasons(password: &str) -> Vec<&'static str> {
     let variety = unique_char_ratio(password);
     match class {
         Some(CharClass::Digit) if class_run >= 12 => reasons.push("class_run"),
-        Some(CharClass::Lower) | Some(CharClass::Upper)
-            if class_run >= 20 && variety <= 0.4 =>
-        {
+        Some(CharClass::Lower) | Some(CharClass::Upper) if class_run >= 20 && variety <= 0.4 => {
             reasons.push("class_run")
         }
         _ => {}
@@ -396,7 +392,8 @@ mod tests {
     #[test]
     fn alphabet_is_sequential() {
         assert!(longest_monotonic_run("abcdefghijklmnopqrstuvwxyz") >= 26);
-        let (l, r) = apply_sequence_demotion(StrengthLabel::VeryStrong, "abcdefghijklmnopqrstuvwxyz");
+        let (l, r) =
+            apply_sequence_demotion(StrengthLabel::VeryStrong, "abcdefghijklmnopqrstuvwxyz");
         assert_eq!(l, StrengthLabel::Weak);
         assert!(r.contains(&"sequential_run"));
     }
@@ -446,7 +443,9 @@ mod tests {
         assert!(n >= 12);
         assert_eq!(c, Some(CharClass::Digit));
         let (_, r) = apply_sequence_demotion(StrengthLabel::Strong, "111222333444");
-        assert!(r.contains(&"class_run") || r.contains(&"low_variety") || r.contains(&"tiled_fragment"));
+        assert!(
+            r.contains(&"class_run") || r.contains(&"low_variety") || r.contains(&"tiled_fragment")
+        );
     }
 
     #[test]

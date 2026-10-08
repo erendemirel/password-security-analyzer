@@ -27,11 +27,7 @@ pub enum HibpError {
 
 /// Minimal HTTP GET used by HIBP so native and WASM can plug different stacks.
 pub trait HttpGet {
-    fn get_text(
-        &self,
-        url: &str,
-        headers: &[(&str, &str)],
-    ) -> Result<String, HibpError>;
+    fn get_text(&self, url: &str, headers: &[(&str, &str)]) -> Result<String, HibpError>;
 }
 
 /// SHA-1 hex (uppercase) of UTF-8 password bytes.
@@ -80,10 +76,7 @@ pub fn check_pwned<H: HttpGet>(
 ) -> Result<BreachResult, HibpError> {
     let (prefix, suffix) = hash_prefix_suffix(password);
     let url = format!("{HIBP_RANGE_URL}{prefix}");
-    let headers = [
-        ("User-Agent", user_agent),
-        ("Add-Padding", "true"),
-    ];
+    let headers = [("User-Agent", user_agent), ("Add-Padding", "true")];
     let body = http.get_text(&url, &headers)?;
     match match_range_body(&body, &suffix)? {
         Some(n) => Ok(BreachResult::pwned(n)),
@@ -136,11 +129,7 @@ pub fn check_pwned_offline(password: &str, store_path: &Path) -> Result<BreachRe
     )))
 }
 
-fn check_offline_dir(
-    dir: &Path,
-    prefix: &str,
-    suffix: &str,
-) -> Result<BreachResult, HibpError> {
+fn check_offline_dir(dir: &Path, prefix: &str, suffix: &str) -> Result<BreachResult, HibpError> {
     let candidates = [
         dir.join(prefix),
         dir.join(format!("{prefix}.txt")),
@@ -149,9 +138,8 @@ fn check_offline_dir(
     ];
     for path in &candidates {
         if path.is_file() {
-            let body = fs::read_to_string(path).map_err(|e| {
-                HibpError::Offline(format!("read {}: {e}", path.display()))
-            })?;
+            let body = fs::read_to_string(path)
+                .map_err(|e| HibpError::Offline(format!("read {}: {e}", path.display())))?;
             return match match_range_body(&body, suffix)? {
                 Some(n) => Ok(BreachResult::pwned_offline(n)),
                 None => Ok(BreachResult::clean_offline()),
@@ -236,11 +224,7 @@ impl Default for NativeHttp {
 
 #[cfg(feature = "native-http")]
 impl HttpGet for NativeHttp {
-    fn get_text(
-        &self,
-        url: &str,
-        headers: &[(&str, &str)],
-    ) -> Result<String, HibpError> {
+    fn get_text(&self, url: &str, headers: &[(&str, &str)]) -> Result<String, HibpError> {
         let client = reqwest::blocking::Client::builder()
             .timeout(std::time::Duration::from_millis(self.timeout_ms))
             .build()
@@ -280,9 +264,11 @@ BBBB1111111111111111111111111111111:2\n";
             .unwrap()
             .unwrap();
         assert_eq!(n, 3861493);
-        assert!(match_range_body(body, "AAAA0000000000000000000000000000000")
-            .unwrap()
-            .is_none());
+        assert!(
+            match_range_body(body, "AAAA0000000000000000000000000000000")
+                .unwrap()
+                .is_none()
+        );
         assert_eq!(
             match_range_body(body, "bbbb1111111111111111111111111111111")
                 .unwrap()
@@ -309,10 +295,7 @@ BBBB1111111111111111111111111111111:2\n";
 
     #[test]
     fn offline_dir_range_hit() {
-        let dir = std::env::temp_dir().join(format!(
-            "psa_hibp_test_{}",
-            std::process::id()
-        ));
+        let dir = std::env::temp_dir().join(format!("psa_hibp_test_{}", std::process::id()));
         let _ = fs::remove_dir_all(&dir);
         fs::create_dir_all(&dir).unwrap();
         let (prefix, suffix) = hash_prefix_suffix("password");

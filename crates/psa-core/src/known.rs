@@ -93,10 +93,7 @@ impl KnownPasswords {
     }
 
     fn lookup_hash(&self, hash: u64) -> Option<u32> {
-        self.hashes
-            .binary_search(&hash)
-            .ok()
-            .map(|i| self.ranks[i])
+        self.hashes.binary_search(&hash).ok().map(|i| self.ranks[i])
     }
 
     pub fn save_to_path(&self, path: impl AsRef<Path>) -> Result<(), KnownError> {
